@@ -509,7 +509,6 @@ body {
   position: relative;
   width: 100%;
   padding-top: calc(100% * 5063 / 3375);
-  background-image: url("images/deonluyen-image.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -701,7 +700,6 @@ body {
 
 /* PODCASTS CODE */
 .wrapper-podcasts {
-  background-image: url("images/podcast-image.jpg");
   width: 100%;
   padding-top: calc(100% * 4935 / 3456);
   background-size: cover;
@@ -728,7 +726,6 @@ body {
   flex-direction: column;
   height: max-content;
   align-items: center;
-  /* margin-bottom: 20vh; */
 }
 
 .podcasts-introduction-1 {
