@@ -1,7 +1,6 @@
 <?php
     get_header();
 ?>
-    <div style="width: 100%; height: 3rem;" id="anchor-start-page"></div>
 
     <div class="wrapper-main-image">
         <img class="main-image" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/main-image.jpg" alt="Main-Image">
@@ -24,12 +23,14 @@
                 <button class="btn-view-all"> <a href="/HocLieu/Tailieuthamkhao/homepage.html" onclick="return false;">Xem thêm</a> </button>
             </div>
             <div class="wrapper-main-card">
-                <div class="main-card">
-                    <img class="image-main-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card">
-                    <h2 class="heading-main-card">Tiêu đề card chính</h2>
-                    <h4 class="description-main-card">Description card chính</h4>
-                    <div class="hashtag-main-card">#Hashtag</div>
-                </div>
+                <a href="#!">
+                    <div class="main-card">
+                        <img class="image-main-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card">
+                        <h2 class="heading-main-card">Tiêu đề card chính</h2>
+                        <h4 class="description-main-card">Description card chính</h4>
+                        <div class="hashtag-main-card">#Hashtag</div>
+                    </div>
+                </a>
             </div>
             <div class="wrapper-smaller-cards">
                 <div class="smaller-card">
@@ -143,7 +144,7 @@
         </div>
     </div>
 
-    <div class="wrapper-deonluyen" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/deonluyen-image.jpg');">
+    <div class="wrapper-deonluyen" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/deonluyen-image.jpg'); background-position: center center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.5); background-blend-mode: multiply;">
         <div class="container-deonluyen">
             <div class="deonluyen-introduction">
                 <h1>Đề ôn luyện</h1>
@@ -362,7 +363,7 @@
         </div>
     </div>
 
-    <div class="wrapper-podcasts" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/podcast-image.jpg');">
+    <div class="wrapper-podcasts" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/podcast-image.jpg'); background-position: center center; background-repeat: no-repeat; background-color: rgba(0, 0, 0, 0.1); background-blend-mode: multiply;">
         <style>
             .wrapper-podcasts {
                 background-image: url("<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/podcasts-image.jpg");
