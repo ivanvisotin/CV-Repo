@@ -23,117 +23,77 @@
                     echo '<a href="' . get_category_link($queried_object) . '">' . $queried_object->name . '</a>';
                 ?>
             </div>
-            <h1>Các tài liệu <?php echo $queried_object->name ?> mới nhất</h1>
-            <div class="posts-container">
-                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Posts Image" class="posts-image">
-                <div class="posts-content">
-                    <a href="" class="title">Đây là một cái title rất là dài luôn ạ mọi người Đây là một cái title rất
-                        là dài luôn ạ mọi ngườiĐây là một cái title rất là dài luôn ạ mọi ngườiĐây là một cái title rất
-                        là dài luôn ạ mọi ngườiĐây là một cái title rất là dài luôn ạ mọi người</a>
-                    <p class="excerpt">Đây là một cái paragraph mô tả mọi người ạ. Đây là một cái paragraph mô tả mọi
-                        người ạ.Đây là một cái paragraph mô tả mọi người ạ.Đây là một cái paragraph mô tả mọi người
-                        ạ.Đây là một cái paragraph mô tả mọi người ạ.</p>
-                    <div class="info">
-                        <div class="tags">
-                            <a href="#!" class="tag">Tag1</a>
-                            <a href="#!" class="tag">Tag2</a>
-                            <a href="#!" class="tag">Tag3</a>
-                        </div>
-                        <div class="date">
-                            <i class="fa-solid fa-calendar-days"></i>&nbsp; 24/12/2007
-                        </div>
-                    </div>
+            <?php 
+                if (is_category('content-archive'))
+                {
+                    echo '<h1>Tất cả tài liệu</h1>';
+                }
+                else {
+                    echo '<h1>Các tài liệu ' . $queried_object->name . ' mới nhất</h1>';
+                }
+            ?>
+            <?php
 
-                </div>
-            </div>
-            <div class="posts-container">
-                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Posts Image" class="posts-image">
-                <div class="posts-content">
-                    <a href="" class="title">Đây là một cái title rất là dài luôn ạ mọi người Đây là một cái title rất
-                        là dài luôn ạ mọi ngườiĐây là một cái title rất là dài luôn ạ mọi ngườiĐây là một cái title rất
-                        là dài luôn ạ mọi ngườiĐây là một cái title rất là dài luôn ạ mọi người</a>
-                    <p class="excerpt">Đây là một cái paragraph mô tả mọi người ạ. Đây là một cái paragraph mô tả mọi
-                        người ạ.Đây là một cái paragraph mô tả mọi người ạ.Đây là một cái paragraph mô tả mọi người
-                        ạ.Đây là một cái paragraph mô tả mọi người ạ.</p>
-                    <div class="info">
-                        <div class="tags">
-                            <a href="#!" class="tag">Tag1</a>
-                            <a href="#!" class="tag">Tag2</a>
-                            <a href="#!" class="tag">Tag3</a>
-                        </div>
-                        <div class="date">
-                            <i class="fa-solid fa-calendar-days"></i>&nbsp; 24/12/2007
-                        </div>
-                    </div>
+                $main_category = get_category_by_slug($queried_object->slug);
 
-                </div>
-            </div>
-            <div class="posts-container">
-                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Posts Image" class="posts-image">
-                <div class="posts-content">
-                    <a href="" class="title">Đây là một cái title rất là dài luôn ạ mọi người Đây là một cái title rất
-                        là dài luôn ạ mọi ngườiĐây là một cái title rất là dài luôn ạ mọi ngườiĐây là một cái title rất
-                        là dài luôn ạ mọi ngườiĐây là một cái title rất là dài luôn ạ mọi người</a>
-                    <p class="excerpt">Đây là một cái paragraph mô tả mọi người ạ. Đây là một cái paragraph mô tả mọi
-                        người ạ.Đây là một cái paragraph mô tả mọi người ạ.Đây là một cái paragraph mô tả mọi người
-                        ạ.Đây là một cái paragraph mô tả mọi người ạ.</p>
-                    <div class="info">
-                        <div class="tags">
-                            <a href="#!" class="tag">Tag1</a>
-                            <a href="#!" class="tag">Tag2</a>
-                            <a href="#!" class="tag">Tag3</a>
-                        </div>
-                        <div class="date">
-                            <i class="fa-solid fa-calendar-days"></i>&nbsp; 24/12/2007
-                        </div>
-                    </div>
+                if ($main_category) {
 
-                </div>
-            </div>
-            <div class="posts-container">
-                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Posts Image" class="posts-image">
-                <div class="posts-content">
-                    <a href="" class="title">Đây là một cái title rất là dài luôn ạ mọi người Đây là một cái title rất
-                        là dài luôn ạ mọi ngườiĐây là một cái title rất là dài luôn ạ mọi ngườiĐây là một cái title rất
-                        là dài luôn ạ mọi ngườiĐây là một cái title rất là dài luôn ạ mọi người</a>
-                    <p class="excerpt">Đây là một cái paragraph mô tả mọi người ạ. Đây là một cái paragraph mô tả mọi
-                        người ạ.Đây là một cái paragraph mô tả mọi người ạ.Đây là một cái paragraph mô tả mọi người
-                        ạ.Đây là một cái paragraph mô tả mọi người ạ.</p>
-                    <div class="info">
-                        <div class="tags">
-                            <a href="#!" class="tag">Tag1</a>
-                            <a href="#!" class="tag">Tag2</a>
-                            <a href="#!" class="tag">Tag3</a>
-                        </div>
-                        <div class="date">
-                            <i class="fa-solid fa-calendar-days"></i>&nbsp; 24/12/2007
-                        </div>
-                    </div>
+                    $main_category_id = $main_category->term_id;
 
-                </div>
-            </div>
-            <div class="posts-container">
-                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Posts Image" class="posts-image">
-                <div class="posts-content">
-                    <a href="" class="title">Đây là một cái title rất là dài luôn ạ mọi người Đây là một cái title rất
-                        là dài luôn ạ mọi ngườiĐây là một cái title rất là dài luôn ạ mọi ngườiĐây là một cái title rất
-                        là dài luôn ạ mọi ngườiĐây là một cái title rất là dài luôn ạ mọi người</a>
-                    <p class="excerpt">Đây là một cái paragraph mô tả mọi người ạ. Đây là một cái paragraph mô tả mọi
-                        người ạ.Đây là một cái paragraph mô tả mọi người ạ.Đây là một cái paragraph mô tả mọi người
-                        ạ.Đây là một cái paragraph mô tả mọi người ạ.</p>
-                    <div class="info">
-                        <div class="tags">
-                            <a href="#!" class="tag">Tag1</a>
-                            <a href="#!" class="tag">Tag2</a>
-                            <a href="#!" class="tag">Tag3</a>
-                        </div>
-                        <div class="date">
-                            <i class="fa-solid fa-calendar-days"></i>&nbsp; 24/12/2007
-                        </div>
-                    </div>
+                    $child_categories = get_term_children($main_category_id, 'category');
 
-                </div>
-            </div>
+                    $categories_to_include = array_merge(array($main_category_id), $child_categories);
+
+                    $args = array(
+                        'category__in'   => $categories_to_include,
+                        'posts_per_page' => 10,
+                        'orderby'        => 'date',
+                        'order'          => 'DESC' 
+                    );
+
+                    $query = new WP_Query($args);
+
+                    if ($query->have_posts()) :
+                        while ($query->have_posts()) : $query->the_post(); 
+            ?>
+                            <div class="posts-container"> 
+                                <?php
+                                    $image_id = get_post_thumbnail_id(); 
+                                    $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                                    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                                    if (empty($image_alt)) {
+                                        $image_alt = get_the_title(); // Fallback to post title
+                                    }
+                                    if ($image_src) :
+                                        $image_url = $image_src[0]; 
+                                        echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="posts-image">';
+                                    else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="hello" class="posts-image">';
+                                    endif; 
+                                ?>
+                                <div class="posts-content">
+                                    <a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
+                                    <p class="excerpt"><?php echo get_the_excerpt(); ?></p>
+                                    <div class="info">
+                                        <div class="tags">
+                                            <?php 
+                                                $tags = get_the_tags();
+                                                foreach ($tags as $tag) {
+                                                    echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                                                }
+                                            ?>
+                                        </div>
+                                        <div class="date">
+                                            <?php echo '<i class="fa-solid fa-calendar-days"></i>&nbsp; ' . get_the_date('d/m/Y') ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endwhile;
+                    endif;
+                    wp_reset_postdata();
+                }
+            ?> 
+            
             <div class="pagination">
                 <a href="#!"><i class="fa-solid fa-arrow-left"></i></a>
                 <span>1</span>

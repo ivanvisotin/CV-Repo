@@ -34,14 +34,14 @@ function has_ancestor_with_slug($slug) {
 function chamvan_register_styles() {
     $version = wp_get_theme()->get( 'Version' );
     wp_enqueue_style('material-icons', "https://fonts.googleapis.com/icon?family=Material+Icons", array(), '142s', 'all');
-    wp_enqueue_style('header-footer-css', get_template_directory_uri() . "/assets/css/header-footer.css", array(), $version, 'all');
-    if (has_ancestor_with_slug('content-archive'))
+    wp_enqueue_style('header-footer', get_template_directory_uri() . "/assets/css/header-footer.css", array(), $version, 'all');
+    if (has_ancestor_with_slug('content-archive') || is_tag())
     {
-        wp_enqueue_style('content-archive-css', get_template_directory_uri() . "/assets/css/content-archive.css", array(), $version, 'all');
+        wp_enqueue_style('content-archive', get_template_directory_uri() . "/assets/css/HocLieu/content-archive.css", array(), $version, 'all');
     }
     if (has_ancestor_with_slug('tests-archive'))
     {
-        wp_enqueue_style('tests-archive-css', get_template_directory_uri() . "/assets/css/tests-archive.css", array(), $version, 'all');
+        wp_enqueue_style('tests-archive', get_template_directory_uri() . "/assets/css/HocLieu/tests-archive.css", array(), $version, 'all');
     }
     if (is_front_page())
     {

@@ -25,6 +25,7 @@
 
 }
 
+
 /* CODE MAIN SECTION */
 .main-wrapper {
     flex-direction: column;
@@ -65,24 +66,33 @@
         width: 100%;
         margin-top: 8vw;
         height: auto;
+        background-color: var(--color5);
+        border-radius: 10px;
+        transition: all 0.5s ease;
+        box-shadow: 3px 0 rgba(0, 0, 0, 0.3), 0px 3px rgba(0, 0, 0, 0.3);
+        &:hover {
+            transform: translateY(-10px);
+        }
 
         >.posts-image {
-            max-width: 35%;
+            width: 40%;
             height: 100%;
             object-fit: cover;
-            margin-right: 5%;
+            border-radius: 10px 0 0 10px;
+
         }
 
         >.posts-content {
-            max-width: 60%;
+            width: 60%;
             height: 100%;
+            padding: 2% 5% 2% 5%;
             display: flex;
             flex-direction: column;
             height: inherit;
             justify-content: space-between;
 
             >a.title {
-                font-size: 1.7vw;
+                font-size: 1.8vw;
                 font-weight: 600;
                 text-decoration: none;
                 color: var(--color1);
@@ -113,7 +123,7 @@
 
                     >a.tag {
                         font-size: 1vw;
-                        padding: 0.3vw 0.8vw 0.3vw 0.8vw;
+                        padding: 0.5vw 1vw 0.5vw 1vw;
                         border-radius: 8px;
                         color: var(--color1);
                         background-color: var(--color3);

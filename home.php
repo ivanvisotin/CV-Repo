@@ -14,133 +14,426 @@
         <div class="tailieu-introduction">
             <h1>Tài liệu tham khảo</h1>
             <h2 style="font-size: 2.5vw; font-weight: 100; color: #17252A">Các tài liệu hữu ích cho bạn phát triển mọi
-                kĩ năng</h2>
+            kĩ năng</h2>
         </div>
-        <img class="tailieu-icon" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/open-book.gif" alt="Icon Đọc">
+
+        <img class="tailieu-icon" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/open-book.gif" alt="Icon Đọc"> 
         <div class="wrapper-tailieu-section">
             <div class="section-heading">
                 <h1 class="name-heading">Đọc</h1>
-                <button class="btn-view-all"> <a href="/HocLieu/Tailieuthamkhao/homepage.html" onclick="return false;">Xem thêm</a> </button>
+                <button class="btn-view-all"> <a href="<?php echo esc_url(home_url('/category/content-archive/doc'));?>">Xem thêm</a> </button>
             </div>
+            <?php 
+                $args = array(
+                    'category_name' => 'doc',
+                    'order' => 'DESC',
+                    'orderby' => 'date',
+                    'posts_per_page' => 1
+                );
+
+                $main_card_query = new WP_Query($args);
+
+                if ($main_card_query->have_posts()):
+                    while ($main_card_query->have_posts()): $main_card_query->the_post();
+            ?>
             <div class="wrapper-main-card">
-                <a href="#!">
-                    <div class="main-card">
-                        <img class="image-main-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card">
-                        <h2 class="heading-main-card">Tiêu đề card chính</h2>
-                        <h4 class="description-main-card">Description card chính</h4>
-                        <div class="hashtag-main-card">#Hashtag</div>
+                <div class="main-card">
+                    <?php 
+                        $image_id = get_post_thumbnail_id(); 
+                        $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                        $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                        if (empty($image_alt)) {
+                            $image_alt = get_the_title(); // Fallback to post title
+                        }
+                        if ($image_src) :
+                            $image_url = $image_src[0]; 
+                            echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="image-main-card">';
+                        else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card" class="image-main-card">';
+                        endif; 
+                    ?>
+                    <a href="<?php echo esc_url(get_permalink());?>">
+                        <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                        <h4 class="description-main-card"><?php echo get_the_excerpt(); ?></h4>
+                    </a>
+                    <div class="hashtag-main-card">
+                        <?php 
+                            $tags = get_the_tags();
+                            foreach ($tags as $tag) {
+                                echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                            }
+                        ?>
                     </div>
-                </a>
+                </div>
+                <?php  
+                    endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
             </div>
             <div class="wrapper-smaller-cards">
-                <div class="smaller-card">
-                    <img class="image-smaller-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card">
-                    <div class="content-smaller-card">
-                        <h3 class="heading-smaller-card">Tiêu đề card phụ</h3>
-                        <div class="hashtag-smaller-card">#Hashtag</div>
+                <?php 
+                    $args = array(
+                        'category_name' => 'doc',
+                        'order' => 'DESC',
+                        'orderby' => 'date',
+                        'posts_per_page' => 2,
+                        'offset' => 1
+                    );
+
+                    $smaller_card_query = new WP_Query($args);
+
+                    if ($smaller_card_query->have_posts()):
+                        while ($smaller_card_query->have_posts()): $smaller_card_query->the_post();
+                ?>
+                    <div class="smaller-card">
+                        <?php 
+                            $image_id = get_post_thumbnail_id(); 
+                            $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                            if (empty($image_alt)) {
+                                $image_alt = get_the_title(); // Fallback to post title
+                            }
+                            if ($image_src) :
+                                $image_url = $image_src[0]; 
+                                echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="image-smaller-card">';
+                            else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card" class="image-smaller-card">';
+                            endif; 
+                        ?>
+                        <div class="content-smaller-card">
+                            <a href="<?php echo esc_url(get_permalink());?>">
+                                <h2 class="heading-smaller-card"><?php the_title(); ?></h2>
+                                <h4 class="description-smaller-card"><?php echo get_the_excerpt(); ?></h4>
+                            </a>
+                            <div class="hashtag-smaller-card">
+                                <?php 
+                                    $tags = get_the_tags();
+                                    foreach ($tags as $tag) {
+                                    echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                                    }
+                                ?>
+                            </div>                                                
+                        </div>
                     </div>
-                </div>
-                <div class="smaller-card">
-                    <img class="image-smaller-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card">
-                    <div class="content-smaller-card">
-                        <h3 class="heading-smaller-card">Tiêu đề card phụ</h3>
-                        <div class="hashtag-smaller-card">#Hashtag</div>
-                    </div>
-                </div>
-            </div>
+                <?php  
+                    endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
+            </div>  
         </div>
+
         <img class="tailieu-icon" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/writing.gif" alt="Icon Đọc">
         <div class="wrapper-tailieu-section">
             <div class="section-heading">
                 <h1 class="name-heading">Viết</h1>
-                <button class="btn-view-all"> <a href="/HocLieu/Tailieuthamkhao/homepage.html" onclick="return false;">Xem thêm</a> </button>
+                <button class="btn-view-all"> <a href="<?php echo esc_url(home_url('/category/content-archive/viet'));?>">Xem thêm</a> </button>
             </div>
+            <?php 
+                $args = array(
+                    'category_name' => 'viet',
+                    'order' => 'DESC',
+                    'orderby' => 'date',
+                    'posts_per_page' => 1
+                );
+
+                $main_card_query = new WP_Query($args);
+
+                if ($main_card_query->have_posts()):
+                    while ($main_card_query->have_posts()): $main_card_query->the_post();
+            ?>
             <div class="wrapper-main-card">
                 <div class="main-card">
-                    <img class="image-main-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card">
-                    <h2 class="heading-main-card">Tiêu đề card chính</h2>
-                    <h4 class="description-main-card">Description card chính</h4>
-                    <div class="hashtag-main-card">#Hashtag</div>
+                    <?php 
+                        $image_id = get_post_thumbnail_id(); 
+                        $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                        $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                        if (empty($image_alt)) {
+                            $image_alt = get_the_title(); // Fallback to post title
+                        }
+                        if ($image_src) :
+                            $image_url = $image_src[0]; 
+                            echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="image-main-card">';
+                        else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card" class="image-main-card">';
+                        endif; 
+                    ?>
+                    <a href="<?php echo esc_url(get_permalink());?>">
+                        <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                        <h4 class="description-main-card"><?php echo get_the_excerpt(); ?></h4>
+                    </a>
+                    <div class="hashtag-main-card">
+                        <?php 
+                            $tags = get_the_tags();
+                            foreach ($tags as $tag) {
+                                echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                            }
+                        ?>
+                    </div>
                 </div>
+                <?php  
+                    endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
             </div>
             <div class="wrapper-smaller-cards">
-                <div class="smaller-card">
-                    <img class="image-smaller-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card">
-                    <div class="content-smaller-card">
-                        <h3 class="heading-smaller-card">Tiêu đề card phụ</h3>
-                        <div class="hashtag-smaller-card">#Hashtag</div>
+                <?php 
+                    $args = array(
+                        'category_name' => 'viet',
+                        'order' => 'DESC',
+                        'orderby' => 'date',
+                        'posts_per_page' => 2,
+                        'offset' => 1
+                    );
+
+                    $smaller_card_query = new WP_Query($args);
+
+                    if ($smaller_card_query->have_posts()):
+                        while ($smaller_card_query->have_posts()): $smaller_card_query->the_post();
+                ?>
+                    <div class="smaller-card">
+                        <?php 
+                            $image_id = get_post_thumbnail_id(); 
+                            $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                            if (empty($image_alt)) {
+                                $image_alt = get_the_title(); // Fallback to post title
+                            }
+                            if ($image_src) :
+                                $image_url = $image_src[0]; 
+                                echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="image-smaller-card">';
+                            else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card" class="image-smaller-card">';
+                            endif; 
+                        ?>
+                        <div class="content-smaller-card">
+                            <a href="<?php echo esc_url(get_permalink());?>">
+                                <h2 class="heading-smaller-card"><?php the_title(); ?></h2>
+                                <h4 class="description-smaller-card"><?php echo get_the_excerpt(); ?></h4>
+                            </a>
+                            <div class="hashtag-smaller-card">
+                                <?php 
+                                    $tags = get_the_tags();
+                                    foreach ($tags as $tag) {
+                                    echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                                    }
+                                ?>
+                            </div>                                                
+                        </div>
                     </div>
-                </div>
-                <div class="smaller-card">
-                    <img class="image-smaller-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card">
-                    <div class="content-smaller-card">
-                        <h3 class="heading-smaller-card">Tiêu đề card phụ</h3>
-                        <div class="hashtag-smaller-card">#Hashtag</div>
-                    </div>
-                </div>
-            </div>
+                <?php  
+                    endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
+            </div>  
         </div>
+        
         <img class="tailieu-icon" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/speak.gif" alt="Icon Đọc">
         <div class="wrapper-tailieu-section">
             <div class="section-heading">
                 <h1 class="name-heading">Nói</h1>
-                <button class="btn-view-all"> <a href="/HocLieu/Tailieuthamkhao/homepage.html" onclick="return false;">Xem thêm</a> </button>
+                <button class="btn-view-all"> <a href="<?php echo esc_url(home_url('/category/content-archive/noi'));?>">Xem thêm</a> </button>
             </div>
+            <?php 
+                $args = array(
+                    'category_name' => 'noi',
+                    'order' => 'DESC',
+                    'orderby' => 'date',
+                    'posts_per_page' => 1
+                );
+
+                $main_card_query = new WP_Query($args);
+
+                if ($main_card_query->have_posts()):
+                    while ($main_card_query->have_posts()): $main_card_query->the_post();
+            ?>
             <div class="wrapper-main-card">
                 <div class="main-card">
-                    <img class="image-main-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card">
-                    <h2 class="heading-main-card">Tiêu đề card chính</h2>
-                    <h4 class="description-main-card">Description card chính</h4>
-                    <div class="hashtag-main-card">#Hashtag</div>
+                    <?php 
+                        $image_id = get_post_thumbnail_id(); 
+                        $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                        $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                        if (empty($image_alt)) {
+                            $image_alt = get_the_title(); // Fallback to post title
+                        }
+                        if ($image_src) :
+                            $image_url = $image_src[0]; 
+                            echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="image-main-card">';
+                        else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card" class="image-main-card">';
+                        endif; 
+                    ?>
+                    <a href="<?php echo esc_url(get_permalink());?>">
+                        <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                        <h4 class="description-main-card"><?php echo get_the_excerpt(); ?></h4>
+                    </a>
+                    <div class="hashtag-main-card">
+                        <?php 
+                            $tags = get_the_tags();
+                            foreach ($tags as $tag) {
+                                echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                            }
+                        ?>
+                    </div>
                 </div>
+                <?php  
+                    endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
             </div>
             <div class="wrapper-smaller-cards">
-                <div class="smaller-card">
-                    <img class="image-smaller-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card">
-                    <div class="content-smaller-card">
-                        <h3 class="heading-smaller-card">Tiêu đề card phụ</h3>
-                        <div class="hashtag-smaller-card">#Hashtag</div>
+                <?php 
+                    $args = array(
+                        'category_name' => 'noi',
+                        'order' => 'DESC',
+                        'orderby' => 'date',
+                        'posts_per_page' => 2,
+                        'offset' => 1
+                    );
+
+                    $smaller_card_query = new WP_Query($args);
+
+                    if ($smaller_card_query->have_posts()):
+                        while ($smaller_card_query->have_posts()): $smaller_card_query->the_post();
+                ?>
+                    <div class="smaller-card">
+                        <?php 
+                            $image_id = get_post_thumbnail_id(); 
+                            $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                            if (empty($image_alt)) {
+                                $image_alt = get_the_title(); // Fallback to post title
+                            }
+                            if ($image_src) :
+                                $image_url = $image_src[0]; 
+                                echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="image-smaller-card">';
+                            else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card" class="image-smaller-card">';
+                            endif; 
+                        ?>
+                        <div class="content-smaller-card">
+                            <a href="<?php echo esc_url(get_permalink());?>">
+                                <h2 class="heading-smaller-card"><?php the_title(); ?></h2>
+                                <h4 class="description-smaller-card"><?php echo get_the_excerpt(); ?></h4>
+                            </a>
+                            <div class="hashtag-smaller-card">
+                                <?php 
+                                    $tags = get_the_tags();
+                                    foreach ($tags as $tag) {
+                                    echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                                    }
+                                ?>
+                            </div>                                                
+                        </div>
                     </div>
-                </div>
-                <div class="smaller-card">
-                    <img class="image-smaller-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card">
-                    <div class="content-smaller-card">
-                        <h3 class="heading-smaller-card">Tiêu đề card phụ</h3>
-                        <div class="hashtag-smaller-card">#Hashtag</div>
-                    </div>
-                </div>
-            </div>
+                <?php  
+                    endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
+            </div>  
         </div>
         <img class="tailieu-icon" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/listening.gif" alt="Icon Đọc">
         <div class="wrapper-tailieu-section">
             <div class="section-heading">
                 <h1 class="name-heading">Nghe</h1>
-                <button class="btn-view-all"> <a href="/HocLieu/Tailieuthamkhao/homepage.html" onclick="return false;">Xem thêm</a> </button>
+                <button class="btn-view-all"> <a href="<?php echo esc_url(home_url('/category/content-archive/nghe'));?>">Xem thêm</a> </button>
             </div>
-            <div class="wrapper-main-card" style="margin-bottom: 0;">
+            <?php 
+                $args = array(
+                    'category_name' => 'nghe',
+                    'order' => 'DESC',
+                    'orderby' => 'date',
+                    'posts_per_page' => 1
+                );
+
+                $main_card_query = new WP_Query($args);
+
+                if ($main_card_query->have_posts()):
+                    while ($main_card_query->have_posts()): $main_card_query->the_post();
+            ?>
+            <div class="wrapper-main-card">
                 <div class="main-card">
-                    <img class="image-main-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card">
-                    <h2 class="heading-main-card">Tiêu đề card chính</h2>
-                    <h4 class="description-main-card">Description card chính</h4>
-                    <div class="hashtag-main-card">#Hashtag</div>
-                </div>
-            </div>
-            <div class="wrapper-smaller-cards" style="margin-bottom: 0;">
-                <div class="smaller-card">
-                    <img class="image-smaller-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card">
-                    <div class="content-smaller-card">
-                        <h3 class="heading-smaller-card">Tiêu đề card phụ</h3>
-                        <div class="hashtag-smaller-card">#Hashtag</div>
+                    <?php 
+                        $image_id = get_post_thumbnail_id(); 
+                        $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                        $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                        if (empty($image_alt)) {
+                            $image_alt = get_the_title(); // Fallback to post title
+                        }
+                        if ($image_src) :
+                            $image_url = $image_src[0]; 
+                            echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="image-main-card">';
+                        else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card" class="image-main-card">';
+                        endif; 
+                    ?>
+                    <a href="<?php echo esc_url(get_permalink());?>">
+                        <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                        <h4 class="description-main-card"><?php echo get_the_excerpt(); ?></h4>
+                    </a>
+                    <div class="hashtag-main-card">
+                        <?php 
+                            $tags = get_the_tags();
+                            foreach ($tags as $tag) {
+                                echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                            }
+                        ?>
                     </div>
                 </div>
-                <div class="smaller-card">
-                    <img class="image-smaller-card" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card">
-                    <div class="content-smaller-card">
-                        <h3 class="heading-smaller-card">Tiêu đề card phụ</h3>
-                        <div class="hashtag-smaller-card">#Hashtag</div>
-                    </div>
-                </div>
+                <?php  
+                    endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
             </div>
+            <div class="wrapper-smaller-cards">
+                <?php 
+                    $args = array(
+                        'category_name' => 'nghe',
+                        'order' => 'DESC',
+                        'orderby' => 'date',
+                        'posts_per_page' => 2,
+                        'offset' => 1
+                    );
+
+                    $smaller_card_query = new WP_Query($args);
+
+                    if ($smaller_card_query->have_posts()):
+                        while ($smaller_card_query->have_posts()): $smaller_card_query->the_post();
+                ?>
+                    <div class="smaller-card">
+                        <?php 
+                            $image_id = get_post_thumbnail_id(); 
+                            $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                            if (empty($image_alt)) {
+                                $image_alt = get_the_title(); // Fallback to post title
+                            }
+                            if ($image_src) :
+                                $image_url = $image_src[0]; 
+                                echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="image-smaller-card">';
+                            else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Smaller Card" class="image-smaller-card">';
+                            endif; 
+                        ?>
+                        <div class="content-smaller-card">
+                            <a href="<?php echo esc_url(get_permalink());?>">
+                                <h2 class="heading-smaller-card"><?php the_title(); ?></h2>
+                                <h4 class="description-smaller-card"><?php echo get_the_excerpt(); ?></h4>
+                            </a>
+                            <div class="hashtag-smaller-card">
+                                <?php 
+                                    $tags = get_the_tags();
+                                    foreach ($tags as $tag) {
+                                    echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                                    }
+                                ?>
+                            </div>                                                
+                        </div>
+                    </div>
+                <?php  
+                    endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
+            </div>  
         </div>
     </div>
 
@@ -154,66 +447,49 @@
                 <div class="deonluyen-content-introduction">
                     <h2>Lớp 10</h2>
                     <h3>khởi đầu</h3>
-                    <button class="btn-view-all" id="deonluyen"><a onclick="return false;">Xem thêm</a></button>
+                    <button class="btn-view-all" id="deonluyen"><a href="<?php echo esc_url(home_url('/category/tests-archive/lop-10'));?>">Xem thêm</a></button>
                 </div>
                 <div class="swiper-parent">
+                    <?php 
+                        $args = array(
+                            'category_name' => 'lop-10',
+                            'order' => 'DESC',
+                            'orderby' => 'date',
+                            'posts_per_page' => -1
+                        );
+        
+                        $tests_10_query = new WP_Query($args);
+        
+                        if ($tests_10_query->have_posts()):
+                            while ($tests_10_query->have_posts()): $tests_10_query->the_post();
+                    ?>
                     <div class="deonluyen-container-cards swiper swiper1">
                         <div class="deonluyen-wrapper-cards swiper-wrapper">
                             <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
+                                <?php
+                                    $image_id = get_post_thumbnail_id(); 
+                                    $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                                    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                                    if (empty($image_alt)) {
+                                        $image_alt = get_the_title(); // Fallback to post title
+                                    }
+                                    if ($image_src) :
+                                        $image_url = $image_src[0]; 
+                                        echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="deonluyen-card-image">';
+                                    else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="hello" class="deonluyen-card-image">';
+                                    endif; 
+                                ?>
                                 <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
+                                    <h3> <?php the_title(); ?> </h3>
+                                    <a href="<?php echo esc_url(get_permalink());?>">Làm ngay</a>
                                 </div>
                             </div>
                         </div>
+                        <?php 
+                            endwhile;
+                        endif;
+                        wp_reset_postdata();
+                        ?>
                     </div>
                     <div class="swiper-pagination swiper-pagination1"></div>
                     <div class="swiper-button-prev swiper-button-prev1"></div>
@@ -224,140 +500,106 @@
                 <div class="deonluyen-content-introduction">
                     <h2>Lớp 11</h2>
                     <h3>tiến bước</h3>
-                    <button class="btn-view-all" id="deonluyen"><a onclick="return false;">Xem thêm</a></button>
+                    <button class="btn-view-all" id="deonluyen"><a href="<?php echo esc_url(home_url('/category/tests-archive/lop-10'));?>">Xem thêm</a></button>
                 </div>
                 <div class="swiper-parent">
-                    <div class="deonluyen-container-cards swiper swiper2">
+                    <?php 
+                        $args = array(
+                            'category_name' => 'lop-11',
+                            'order' => 'DESC',
+                            'orderby' => 'date',
+                            'posts_per_page' => -1
+                        );
+        
+                        $tests_10_query = new WP_Query($args);
+        
+                        if ($tests_10_query->have_posts()):
+                            while ($tests_10_query->have_posts()): $tests_10_query->the_post();
+                    ?>
+                    <div class="deonluyen-container-cards swiper swiper1">
                         <div class="deonluyen-wrapper-cards swiper-wrapper">
                             <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
+                                <?php
+                                    $image_id = get_post_thumbnail_id(); 
+                                    $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                                    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                                    if (empty($image_alt)) {
+                                        $image_alt = get_the_title(); // Fallback to post title
+                                    }
+                                    if ($image_src) :
+                                        $image_url = $image_src[0]; 
+                                        echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="deonluyen-card-image">';
+                                    else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="hello" class="deonluyen-card-image">';
+                                    endif; 
+                                ?>
                                 <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
+                                    <h3> <?php the_title(); ?> </h3>
+                                    <a href="<?php echo esc_url(get_permalink());?>">Làm ngay</a>
                                 </div>
                             </div>
                         </div>
+                        <?php 
+                            endwhile;
+                        endif;
+                        wp_reset_postdata();
+                        ?>
                     </div>
-                    <div class="swiper-pagination swiper-pagination2"></div>
-                    <div class="swiper-button-prev swiper-button-prev2"></div>
-                    <div class="swiper-button-next swiper-button-next2"></div>
+                    <div class="swiper-pagination swiper-pagination1"></div>
+                    <div class="swiper-button-prev swiper-button-prev1"></div>
+                    <div class="swiper-button-next swiper-button-next1"></div>
                 </div>
             </div>
             <div class="deonluyen-container-content">
                 <div class="deonluyen-content-introduction">
                     <h2>Lớp 12</h2>
                     <h3>chinh phục</h3>
-                    <button class="btn-view-all" id="deonluyen"><a onclick="return false;">Xem thêm</a></button>
+                    <button class="btn-view-all" id="deonluyen"><a href="<?php echo esc_url(home_url('/category/tests-archive/lop-10'));?>">Xem thêm</a></button>
                 </div>
                 <div class="swiper-parent">
-                    <div class="deonluyen-container-cards swiper swiper3">
+                    <?php 
+                        $args = array(
+                            'category_name' => 'lop-12',
+                            'order' => 'DESC',
+                            'orderby' => 'date',
+                            'posts_per_page' => -1
+                        );
+        
+                        $tests_10_query = new WP_Query($args);
+        
+                        if ($tests_10_query->have_posts()):
+                            while ($tests_10_query->have_posts()): $tests_10_query->the_post();
+                    ?>
+                    <div class="deonluyen-container-cards swiper swiper1">
                         <div class="deonluyen-wrapper-cards swiper-wrapper">
                             <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
+                                <?php
+                                    $image_id = get_post_thumbnail_id(); 
+                                    $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                                    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                                    if (empty($image_alt)) {
+                                        $image_alt = get_the_title(); // Fallback to post title
+                                    }
+                                    if ($image_src) :
+                                        $image_url = $image_src[0]; 
+                                        echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="deonluyen-card-image">';
+                                    else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="hello" class="deonluyen-card-image">';
+                                    endif; 
+                                ?>
                                 <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
-                                </div>
-                            </div>
-                            <div class="deonluyen-card swiper-slide">
-                                <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Deonluyen-Image"
-                                    class="deonluyen-card-image">
-                                <div class="deonluyen-card-content">
-                                    <h3>Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái tiêu đề rất dài Một cái
-                                        tiêu đề rất dài </h3>
-                                    <button>Làm ngay</button>
+                                    <h3> <?php the_title(); ?> </h3>
+                                    <a href="<?php echo esc_url(get_permalink());?>">Làm ngay</a>
                                 </div>
                             </div>
                         </div>
+                        <?php 
+                            endwhile;
+                        endif;
+                        wp_reset_postdata();
+                        ?>
                     </div>
-                    <div class="swiper-pagination swiper-pagination3"></div>
-                    <div class="swiper-button-prev swiper-button-prev3"></div>
-                    <div class="swiper-button-next swiper-button-next3"></div>
+                    <div class="swiper-pagination swiper-pagination1"></div>
+                    <div class="swiper-button-prev swiper-button-prev1"></div>
+                    <div class="swiper-button-next swiper-button-next1"></div>
                 </div>
             </div>
         </div>
@@ -426,7 +668,7 @@
                         <div class="content">
                             <h1>Xem Podcasts trên Chạm Văn</h1>
                             <p>Sử dụng giao diện podcasts được thiết kế riêng biệt của Chạm Văn với trải nghiệm nghe nhìn tốt nhất.</p>
-                            <a href="/Podcasts/homepage.html">Tới trang Podcasts &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="<?php echo home_url('category/podcasts-archive')?>">Tới trang Podcasts &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="podcasts-conclusion-half" id="right"> 
@@ -448,7 +690,7 @@
             <div>
                 <h1>Công cụ hỗ trợ</h1>
                 <p>Cùng tìm hiểu về những tiềm năng rộng mở của công nghệ AI, và cách bạn có thể tận dụng chúng cho niềm cảm hứng Văn học của mình.</p>
-                <a href="/Tools/viewpage.html">Bắt đầu ngay</a>
+                <a href="<?php echo home_url('category/tools-archive')?>">Bắt đầu ngay</a>
             </div>
         </div>
         <div class="image-tools">
