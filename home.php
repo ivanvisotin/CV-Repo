@@ -331,6 +331,7 @@
                 ?>
             </div>  
         </div>
+
         <img class="tailieu-icon" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/listening.gif" alt="Icon Đọc">
         <div class="wrapper-tailieu-section">
             <div class="section-heading">
@@ -450,50 +451,50 @@
                     <button class="btn-view-all" id="deonluyen"><a href="<?php echo esc_url(home_url('/category/tests-archive/lop-10'));?>">Xem thêm</a></button>
                 </div>
                 <div class="swiper-parent">
-                    <?php 
-                        $args = array(
-                            'category_name' => 'lop-10',
-                            'order' => 'DESC',
-                            'orderby' => 'date',
-                            'posts_per_page' => -1
-                        );
-        
-                        $tests_10_query = new WP_Query($args);
-        
-                        if ($tests_10_query->have_posts()):
-                            while ($tests_10_query->have_posts()): $tests_10_query->the_post();
-                    ?>
                     <div class="deonluyen-container-cards swiper swiper1">
                         <div class="deonluyen-wrapper-cards swiper-wrapper">
-                            <div class="deonluyen-card swiper-slide">
-                                <?php
-                                    $image_id = get_post_thumbnail_id(); 
-                                    $image_src = wp_get_attachment_image_src($image_id, 'full'); 
-                                    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
-                                    if (empty($image_alt)) {
-                                        $image_alt = get_the_title(); // Fallback to post title
-                                    }
-                                    if ($image_src) :
-                                        $image_url = $image_src[0]; 
-                                        echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="deonluyen-card-image">';
-                                    else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="hello" class="deonluyen-card-image">';
-                                    endif; 
-                                ?>
-                                <div class="deonluyen-card-content">
-                                    <h3> <?php the_title(); ?> </h3>
-                                    <a href="<?php echo esc_url(get_permalink());?>">Làm ngay</a>
+                            <?php 
+                            $args_10 = array(
+                                'category_name' => 'lop-10',
+                                'order' => 'DESC',
+                                'orderby' => 'date',
+                                'posts_per_page' => -1
+                            );
+            
+                            $tests_10_query = new WP_Query($args_10);
+            
+                            if ($tests_10_query->have_posts()):
+                                while ($tests_10_query->have_posts()): $tests_10_query->the_post();
+                            ?>
+                                <div class="deonluyen-card swiper-slide">
+                                    <?php
+                                        $image_id = get_post_thumbnail_id(); 
+                                        $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                                        $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                                        if (empty($image_alt)) {
+                                            $image_alt = get_the_title(); // Fallback to post title
+                                        }
+                                        if ($image_src) :
+                                            $image_url = $image_src[0]; 
+                                            echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="deonluyen-card-image">';
+                                        else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="hello" class="deonluyen-card-image">';
+                                        endif; 
+                                    ?>
+                                    <div class="deonluyen-card-content">
+                                        <h3> <?php the_title(); ?> </h3>
+                                        <a href="<?php echo esc_url(get_permalink());?>">Làm ngay</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <?php 
+                            <?php 
                             endwhile;
-                        endif;
-                        wp_reset_postdata();
-                        ?>
+                            endif;
+                            wp_reset_postdata();
+                            ?>  
+                        </div>
                     </div>
                     <div class="swiper-pagination swiper-pagination1"></div>
                     <div class="swiper-button-prev swiper-button-prev1"></div>
-                    <div class="swiper-button-next swiper-button-next1"></div>
+                    <div class="swiper-button-next swiper-button-next1"></div>                
                 </div>
             </div>
             <div class="deonluyen-container-content">
@@ -503,21 +504,21 @@
                     <button class="btn-view-all" id="deonluyen"><a href="<?php echo esc_url(home_url('/category/tests-archive/lop-10'));?>">Xem thêm</a></button>
                 </div>
                 <div class="swiper-parent">
-                    <?php 
-                        $args = array(
-                            'category_name' => 'lop-11',
-                            'order' => 'DESC',
-                            'orderby' => 'date',
-                            'posts_per_page' => -1
-                        );
-        
-                        $tests_10_query = new WP_Query($args);
-        
-                        if ($tests_10_query->have_posts()):
-                            while ($tests_10_query->have_posts()): $tests_10_query->the_post();
-                    ?>
-                    <div class="deonluyen-container-cards swiper swiper1">
+                    <div class="deonluyen-container-cards swiper swiper2">
                         <div class="deonluyen-wrapper-cards swiper-wrapper">
+                            <?php 
+                                $args_11 = array(
+                                    'category_name' => 'lop-11',
+                                    'order' => 'DESC',
+                                    'orderby' => 'date',
+                                    'posts_per_page' => -1
+                                );
+                
+                                $tests_11_query = new WP_Query($args_11);
+                
+                                if ($tests_11_query->have_posts()):
+                                    while ($tests_11_query->have_posts()): $tests_11_query->the_post();
+                            ?>
                             <div class="deonluyen-card swiper-slide">
                                 <?php
                                     $image_id = get_post_thumbnail_id(); 
@@ -537,16 +538,16 @@
                                     <a href="<?php echo esc_url(get_permalink());?>">Làm ngay</a>
                                 </div>
                             </div>
+                                <?php 
+                                endwhile;
+                                endif;
+                                wp_reset_postdata();
+                                ?>
                         </div>
-                        <?php 
-                            endwhile;
-                        endif;
-                        wp_reset_postdata();
-                        ?>
                     </div>
-                    <div class="swiper-pagination swiper-pagination1"></div>
-                    <div class="swiper-button-prev swiper-button-prev1"></div>
-                    <div class="swiper-button-next swiper-button-next1"></div>
+                    <div class="swiper-pagination swiper-pagination2"></div>
+                    <div class="swiper-button-prev swiper-button-prev2"></div>
+                    <div class="swiper-button-next swiper-button-next2"></div>
                 </div>
             </div>
             <div class="deonluyen-container-content">
@@ -556,50 +557,50 @@
                     <button class="btn-view-all" id="deonluyen"><a href="<?php echo esc_url(home_url('/category/tests-archive/lop-10'));?>">Xem thêm</a></button>
                 </div>
                 <div class="swiper-parent">
-                    <?php 
-                        $args = array(
-                            'category_name' => 'lop-12',
-                            'order' => 'DESC',
-                            'orderby' => 'date',
-                            'posts_per_page' => -1
-                        );
-        
-                        $tests_10_query = new WP_Query($args);
-        
-                        if ($tests_10_query->have_posts()):
-                            while ($tests_10_query->have_posts()): $tests_10_query->the_post();
-                    ?>
-                    <div class="deonluyen-container-cards swiper swiper1">
+                    <div class="deonluyen-container-cards swiper swiper3">
                         <div class="deonluyen-wrapper-cards swiper-wrapper">
-                            <div class="deonluyen-card swiper-slide">
-                                <?php
-                                    $image_id = get_post_thumbnail_id(); 
-                                    $image_src = wp_get_attachment_image_src($image_id, 'full'); 
-                                    $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
-                                    if (empty($image_alt)) {
-                                        $image_alt = get_the_title(); // Fallback to post title
-                                    }
-                                    if ($image_src) :
-                                        $image_url = $image_src[0]; 
-                                        echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="deonluyen-card-image">';
-                                    else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="hello" class="deonluyen-card-image">';
-                                    endif; 
-                                ?>
-                                <div class="deonluyen-card-content">
-                                    <h3> <?php the_title(); ?> </h3>
-                                    <a href="<?php echo esc_url(get_permalink());?>">Làm ngay</a>
+                            <?php 
+                                $args_12 = array(
+                                    'category_name' => 'lop-12',
+                                    'order' => 'DESC',
+                                    'orderby' => 'date',
+                                    'posts_per_page' => -1
+                                );
+                
+                                $tests_12_query = new WP_Query($args_12);
+                
+                                if ($tests_12_query->have_posts()):
+                                    while ($tests_12_query->have_posts()): $tests_12_query->the_post();
+                            ?>
+                                <div class="deonluyen-card swiper-slide">
+                                    <?php
+                                        $image_id = get_post_thumbnail_id(); 
+                                        $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                                        $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                                        if (empty($image_alt)) {
+                                            $image_alt = get_the_title(); // Fallback to post title
+                                        }
+                                        if ($image_src) :
+                                            $image_url = $image_src[0]; 
+                                            echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="deonluyen-card-image">';
+                                        else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="hello" class="deonluyen-card-image">';
+                                        endif; 
+                                    ?>
+                                    <div class="deonluyen-card-content">
+                                        <h3> <?php the_title(); ?> </h3>
+                                        <a href="<?php echo esc_url(get_permalink());?>">Làm ngay</a>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php 
+                                endwhile;
+                                endif;
+                                wp_reset_postdata();
+                            ?>
                         </div>
-                        <?php 
-                            endwhile;
-                        endif;
-                        wp_reset_postdata();
-                        ?>
                     </div>
-                    <div class="swiper-pagination swiper-pagination1"></div>
-                    <div class="swiper-button-prev swiper-button-prev1"></div>
-                    <div class="swiper-button-next swiper-button-next1"></div>
+                    <div class="swiper-pagination swiper-pagination3"></div>
+                    <div class="swiper-button-prev swiper-button-prev3"></div>
+                    <div class="swiper-button-next swiper-button-next3"></div>
                 </div>
             </div>
         </div>

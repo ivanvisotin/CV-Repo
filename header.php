@@ -52,7 +52,7 @@
             <li><a class="nav-link" href="<?php echo home_url('/category/tools-archive')?>">Công cụ hỗ trợ</a></li>
         </ul>
         <div class="wrapper-search-button">
-            <input type="text" id="search-button-main-menu" placeholder="Tìm kiếm tài nguyên...">
+            <input type="text" id="search-button-main-menu" placeholder="Tìm kiếm...">
             <i class="fas fa-search"></i>
         </div>
         <div class="wrapper-login-button">

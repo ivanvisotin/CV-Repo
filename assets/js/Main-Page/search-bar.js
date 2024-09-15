@@ -1,24 +1,36 @@
-const searchBar = document.querySelector('.wrapper-search-button input');
+const inputSearchBar = document.querySelector('.wrapper-search-button input');
+const wrapperSearchBar = document.querySelector('.wrapper-search-button');
 
-searchBar.addEventListener('input', () => {
-    if (searchBar.value.trim() !== '') {
-        searchBar.classList.add('expanded');
+inputSearchBar.addEventListener('input', () => {
+    if (inputSearchBar.value.trim() !== '') {
+        inputSearchBar.classList.add('expanded');
+    } else {
+        if (!inputSearchBar.matches(':focus')) {
+            inputSearchBar.classList.remove('expanded');
+        }
     }
-    else searchBar.classList.remove('expanded');
 });
 
-searchBar.addEventListener('mouseover', () => {
-    searchBar.classList.add('expanded');
+wrapperSearchBar.addEventListener('mouseover', () => {
+    inputSearchBar.classList.add('expanded');
 });
 
-searchBar.addEventListener('focus', () => {
-    searchBar.classList.add('expanded');
-});
-
-searchBar.addEventListener('blur', () => {
+wrapperSearchBar.addEventListener('mouseleave', () => {
     setTimeout(() => {
-        if (searchBar.value.trim() === '') {
-            searchBar.classList.remove('expanded');
+        if (inputSearchBar.value.trim() === '' && !inputSearchBar.matches(':focus')) {
+            inputSearchBar.classList.remove('expanded');
+        }
+    }, 150);
+});
+
+inputSearchBar.addEventListener('focus', () => {
+    inputSearchBar.classList.add('expanded');
+});
+
+inputSearchBar.addEventListener('blur', () => {
+    setTimeout(() => {
+        if (inputSearchBar.value.trim() === '') {
+            inputSearchBar.classList.remove('expanded');
         }
     }, 150);
 });

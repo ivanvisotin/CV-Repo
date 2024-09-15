@@ -120,7 +120,7 @@
 
 .wrapper-main-card {
   border-right: 0.3px solid #bdbdbd;
-  width: 50%;
+  width: 52.5%;
   padding-right: 2.5%;
   height: max-content;
 }
@@ -223,7 +223,7 @@
   justify-content: space-between;
   gap: 10vh;
   border-left: 0.3px solid #bdbdbd;
-  width: 50%;
+  width: 47.5%;
   padding-left: 2.5%;
   height: 100%;
 }

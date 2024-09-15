@@ -40,7 +40,7 @@
         margin-bottom: 2vw;
 
         >a {
-            font-size: 1vw;
+            font-size: 1.35vw;
             text-decoration: none;
             color: var(--color1);
             transition: all 0.3s ease;
@@ -192,7 +192,7 @@
         align-items: center;
         font-weight: bold;
         
-        >a {
+        .page-numbers {
             font-size: 1.2vw;
             padding: 1vw 1.2vw;
             border-radius: 5px;
@@ -201,6 +201,15 @@
             border: 2px solid var(--color1);
             transition: all 0.3s ease;
             &:hover {
+                background-color: var(--color3);
+                color: var(--color1);
+            }
+            &.current {
+                font-size: 1.2vw;
+                padding: 1vw 1.2vw;
+                border-radius: 5px;
+                background-color: transparent;
+                border: 2px solid var(--color1);
                 background-color: var(--color3);
                 color: var(--color1);
             }
