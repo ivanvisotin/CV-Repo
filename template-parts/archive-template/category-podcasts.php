@@ -36,7 +36,7 @@
         </div>
         <div class="featured-podcast">
             <?php 
-               /*  $args = array(
+                $args = array(
                     'category_name' => 'podcasts-archive',
                     'order' => 'DESC',
                     'orderby' => 'date',
@@ -44,29 +44,102 @@
                 );
 
                 $featured_podcast = new WP_Query($args);
-                if ($main_card_query->have_posts()):
-                    while ($main_card_query->have_posts()): 
-                $main_card_query->the_post();  */
+                if ($featured_podcast->have_posts()):
+                    while ($featured_podcast->have_posts()): 
+                        $featured_podcast->the_post();  
             ?> 
-            <div class="introduction">
-                <img src="<?php bloginfo('template_directory') ?>/assets/images/Main-Page/placeholder-image.jpg" alt="hello">
-                <span>Giải thưởng Emmy Awards 2024: Liệu Mai Nhật Nam có thắng? Hãy tìm hiểu ngay sau đây!</span>
-            </div>
+                <div class="introduction">
+                    <?php
+                            $image_id = get_post_thumbnail_id(); 
+                            $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                            if (empty($image_alt)) {
+                                $image_alt = get_the_title(); // Fallback to post title
+                            }
+                            if ($image_src) :
+                                $image_url = $image_src[0]; 
+                                echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '">';
+                            else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="hello">';
+                            endif; 
+                    ?>
+                    <span><?php the_title(); ?></span>
+                </div>
             <div class="description">
-                <span>Mai nhật nam đã là một cái tên sáng giá cho Emmy Awards năm nay. Tuy nhiên, phong độ hiện tại của anh trong các phần phim fast and furious đang không tốt. Điều gì đang xảy ra? Dự đoán nào đang chiếm ưu thế?</span>
+                <span><?php echo get_the_excerpt(); ?></span>
                 <div class="links">
-                    <a class="cv-button" href="#!">
+                    <a class="cv-button" href="<?php the_permalink();?>">
                         <img src="<?php bloginfo('template_directory') ?>/assets/images/Main-Page/favicon.png" alt="hello">&nbsp;&nbsp;Xem trên Chạm Văn
                     </a>
-                    <a class="soundcloud-button" href="#!"><i class="fa-brands fa-soundcloud">&nbsp;&nbsp; </i>Soundcloud</a>
-                    <a class="facebook-button" href="#!"><i class="fa-brands fa-facebook">&nbsp;&nbsp; </i>Facebook</a>
+                    <a class="soundcloud-button" href="<?php echo esc_url(get_post_meta(get_the_ID(), 'soundcloud_link', true)); ?>"><i class="fa-brands fa-soundcloud">&nbsp;&nbsp; </i>Soundcloud</a>
+                    <a class="facebook-button" href="<?php echo esc_url(get_post_meta(get_the_ID(), 'facebook_link', true)); ?>"><i class="fa-brands fa-facebook">&nbsp;&nbsp; </i>Facebook</a>
                 </div>
             </div>
+            <?php 
+                endwhile;
+            endif;
+            wp_reset_postdata();
+            ?>
         </div>
     </div>
     <div class="archive-section">
-        <div class="archive-heading">
-            <span>Các tập Podcasts khác</span>
+        <span class="archive-heading">Các tập Podcasts khác</span>
+        <div class="archive-content">
+            <div class="podcasts-content-introduction">
+                <h2>2024</h2>
+            </div>
+            <div class="swiper-parent">
+                <div class="podcasts-container-cards swiper swiper2024">
+                    <div class="podcasts-wrapper-cards swiper-wrapper">
+                        <?php 
+                            $args = array(
+                                'category_name' => 'podcasts-archive',
+                                'order' => 'DESC',
+                                'orderby' => 'date',
+                                'posts_per_page' => -1,
+                                'offset' => 1
+                            );
+
+                            $archive_podcasts = new WP_Query($args);
+
+                            if ($archive_podcasts->have_posts()):
+                                while ($archive_podcasts->have_posts()): 
+                                    $archive_podcasts->the_post(); 
+                        ?>
+                        <div class="podcasts-card swiper-slide">
+                            <?php
+                                $image_id = get_post_thumbnail_id(); 
+                                $image_src = wp_get_attachment_image_src($image_id, 'full'); 
+                                $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
+                                if (empty($image_alt)) {
+                                    $image_alt = get_the_title(); // Fallback to post title
+                                }
+                                if ($image_src) :
+                                    $image_url = $image_src[0]; 
+                                    echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="podcasts-card-image">';
+                                else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="hello" class="podcasts-card-image">';
+                                endif; 
+                            ?>
+                            <div class="podcasts-card-content">
+                                <h3><?php the_title(); ?></h3>
+                                <p><?php echo get_the_excerpt(); ?></p>
+                                <div class="action-buttons">
+                                    <a href="<?php the_permalink(); ?>" class="cv-button-small"><img src="<?php bloginfo('template_directory') ?>/assets/images/Main-Page/favicon.png" alt="hello">&nbsp;&nbsp;Xem trên Chạm Văn</a>
+                                    <a href="<?php echo esc_url(get_post_meta(get_the_ID(), 'facebook_link', true)); ?>" class="facebook-button-small"><i class="fa-brands fa-soundcloud">&nbsp;&nbsp; </i>Facebook</a>
+                                    <a href="<?php echo esc_url(get_post_meta(get_the_ID(), 'soundcloud_link', true)); ?>" class="soundcloud-button-small"><i class="fa-brands fa-facebook">&nbsp;&nbsp; </i>Soundcloud</a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php 
+                            endwhile;
+                        endif;
+                        wp_reset_postdata();
+                        ?>
+                    </div>
+                </div>
+                <div class="swiper-pagination swiper-pagination2024"></div>
+                <div class="swiper-button-prev swiper-button-prev2024"></div>
+                <div class="swiper-button-next swiper-button-next2024"></div>                
+            </div>
         </div>
     </div>
 </div>

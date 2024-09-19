@@ -11,8 +11,10 @@ if (has_ancestor_with_slug('content-archive')) {
 
 }   elseif (has_ancestor_with_slug('podcasts-archive')) {
     get_template_part('template-parts/archive-template/category', 'podcasts');
-
 } 
+    elseif (is_category('tools-archive')) {
+    get_template_part('template-parts/archive-template/category', 'tools');
+    }
 ?>
 
 <?php

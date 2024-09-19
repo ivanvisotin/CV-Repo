@@ -53,7 +53,7 @@
         </ul>
         <div class="wrapper-search-button">
             <input type="text" id="search-button-main-menu" placeholder="Tìm kiếm...">
-            <i class="fas fa-search"></i>
+            <i class="fas fa-search" onclick="performSearch()"></i>
         </div>
         <div class="wrapper-login-button">
             <a href="/Login/login-page.html">Đăng nhập</a>
