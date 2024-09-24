@@ -6,14 +6,14 @@
         <img class="main-image" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/main-image.jpg" alt="Main-Image">
         <div class="main-text">
             <h1 style="font-size: 5vw">Chạm Văn</h1>
-            <h2 style="font-size: 1.54vw; font-weight: 150">Khơi nguồn cảm hứng văn chương</h2>
+            <h2 style="font-size: 1.54vw; font-weight: 400">Khơi nguồn cảm hứng văn chương</h2>
         </div>
     </div>
 
     <div class="wrapper-tailieu">
         <div class="tailieu-introduction">
             <h1>Tài liệu tham khảo</h1>
-            <h2 style="font-size: 2.5vw; font-weight: 100; color: #17252A">Các tài liệu hữu ích cho bạn phát triển mọi
+            <h2 style="font-size: 1.8vw; font-weight: 400; color: #17252A">Các tài liệu hữu ích cho bạn phát triển mọi
             kĩ năng</h2>
         </div>
 
@@ -634,8 +634,8 @@
             <div class="podcasts-content" id="first" data-aos="fade-right"">
                 <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Image" style="margin-right: 5%;">
                 <div>
-                    <h1 style="font-size: 3vw;">Về Góc Nhỏ Văn Học</h1>
-                    <h3 style="font-size: 1.6vw; font-weight: 400;">Lorem ipsum odor amet, consectetuer adipiscing elit.
+                    <h1 style="font-size: 2.5vw;">Về Góc Nhỏ Văn Học</h1>
+                    <h3 style="font-size: 1.35vw; font-weight: 400;">Lorem ipsum odor amet, consectetuer adipiscing elit.
                         Vivamus non porttitor augue vehicula eros nascetur magnis. Nam porttitor blandit iaculis
                         sagittis finibus enim. Cras purus vivamus elementum class purus odio mauris. Class platea nam
                         odio luctus montes laoreet.</h3>
@@ -645,8 +645,8 @@
             </div>
             <div class="podcasts-content" id="second" data-aos="fade-left">
                 <div>
-                    <h1 style="font-size: 3vw;">Podcasts của Góc Nhỏ có gì?</h1>
-                    <h3 style="font-size: 1.6vw; font-weight: 400;">Lorem ipsum odor amet, consectetuer adipiscing elit.
+                    <h1 style="font-size: 2.5vw;">Podcasts của Góc Nhỏ có gì?</h1>
+                    <h3 style="font-size: 1.35vw; font-weight: 400;">Lorem ipsum odor amet, consectetuer adipiscing elit.
                         Vivamus non porttitor augue vehicula eros nascetur magnis. Nam porttitor blandit iaculis
                         sagittis finibus enim. Cras purus vivamus elementum class purus odio mauris. Class platea nam
                         odio luctus montes laoreet.</h3>

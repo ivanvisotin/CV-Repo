@@ -20,7 +20,7 @@
             {
                 $ancestor = get_category($ancestor_id);
                 echo '<a href="' . get_category_link($ancestor->term_id) . '">' . $ancestor->name . '</a>';
-                echo '<i style="font-size: 1vw;">&nbsp; / &nbsp;</i>';
+                echo '<i style="font-size: 1.35vw;">&nbsp; / &nbsp;</i>';
             }
             echo '<a href="' . get_category_link($queried_object) . '">' . $queried_object->name . '</a>';
         ?>
@@ -31,10 +31,6 @@
         <a href="<?php echo get_category_link(get_category_by_slug('lop-10'))?>" class="<?php if ($current_cat_id === get_category_by_slug('lop-10')->term_id) echo 'active'; ?>">Lớp 10</a>
         <a href="<?php echo get_category_link(get_category_by_slug('lop-11'))?>" class="<?php if ($current_cat_id === get_category_by_slug('lop-11')->term_id) echo 'active'; ?>">Lớp 11</a>
         <a href="<?php echo get_category_link(get_category_by_slug('lop-12'))?>" class="<?php if ($current_cat_id === get_category_by_slug('lop-12')->term_id) echo 'active'; ?>">Lớp 12</a>
-        <div class="wrapper-search">
-            <input type="text" placeholder="Nhập tên đề ôn luyện bạn muốn tìm kiếm">
-            <i class="fas fa-search"></i>
-        </div>
     </div>
     
     <?php

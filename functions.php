@@ -32,6 +32,30 @@ function has_ancestor_with_slug($slug) {
     return false;
 }
 
+function single_has_ancestor_with_slug($slug) {
+    if (!is_single() || is_404())
+    {
+        return false;
+    }
+
+    $categories = get_the_category(); 
+
+    foreach ($categories as $category) {
+        if ($category->slug === $slug) {
+            return true;
+        }
+
+        while ($category->parent) {
+            $category = get_category($category->parent);
+            if ($category->slug === $slug) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
 function tag_slugs() {
     if (!is_tag() || is_404()) {
         return false;
@@ -57,15 +81,34 @@ function modify_main_query($query) {
 }
 add_action('pre_get_posts', 'modify_main_query');
 
+function add_post_views() {
+    if (is_single()) { // Check if it's a single post
+        global $post; // Access the global post variable
+        $post_id = $post->ID; // Get the current post ID
+
+        $views = (int) get_post_meta($post_id, 'post_views_count', true);
+        $views++;
+        update_post_meta($post_id, 'post_views_count', $views);
+    }
+}
+add_action('wp_head', 'add_post_views');
+
+
 function chamvan_register_styles() {
     $version = wp_get_theme()->get( 'Version' );
     wp_enqueue_style('material-icons', "https://fonts.googleapis.com/icon?family=Material+Icons", array(), '142s', 'all');
     wp_enqueue_style('header-footer', get_template_directory_uri() . "/assets/css/header-footer.css", array(), $version, 'all');
     if (is_front_page())
     {
-        wp_enqueue_style('mainpage-css', get_template_directory_uri() . "/assets/css/Main-Page/main-page.css", array('mainpage-swiper'), $version, 'all');
+        wp_enqueue_style('mainpage', get_template_directory_uri() . "/assets/css/Main-Page/main-page.css", array('mainpage-swiper'), $version, 'all');
         wp_enqueue_style('mainpage-aos', "https://unpkg.com/aos@next/dist/aos.css", array(), '3.0.0', 'all');
         wp_enqueue_style('mainpage-swiper', "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", array(), '11.1.11', 'all');
+    }
+    if (is_search())
+    {
+        wp_enqueue_style('search-podcasts-swiper', "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", array(), '11.1.11', 'all');
+        wp_enqueue_style('search', get_template_directory_uri() . "/assets/css/search.css", array(), $version, 'all');
+        wp_enqueue_style('material-symbols', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0', array(), null, 'all');
     }
     if (has_ancestor_with_slug('content-archive') || tag_slugs() === 'content')
     {
@@ -79,6 +122,9 @@ function chamvan_register_styles() {
         wp_enqueue_style('podcasts-archive', get_template_directory_uri() . "/assets/css/Podcasts/podcasts-archive.css", array(), $version, 'all');
         wp_enqueue_style('material-symbol-recommend', "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" , array(), $version, 'all');
         wp_enqueue_style('podcasts-swiper', "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", array(), '11.1.11', 'all');
+    }
+    if (single_has_ancestor_with_slug('content-archive')) {
+        wp_enqueue_style('content-single', get_template_directory_uri() . "/assets/css/HocLieu/single-content.css", array(), $version, 'all');
     }
 }
 add_action('wp_enqueue_scripts', 'chamvan_register_styles');
@@ -94,6 +140,10 @@ function chamvan_register_scripts() {
         wp_enqueue_script('mainpage-swiper', get_template_directory_uri()."/assets/js/Main-Page/swiper-script.js", array(), '11.1.11', true);
         wp_enqueue_script('mainpage-aos', 'https://unpkg.com/aos@next/dist/aos.js', array(), '3.0.0', true);
         wp_enqueue_script('mainpage-aos-init', get_template_directory_uri()."/assets/js/Main-Page/aos-init.js", array(), '3.0.0', true);
+    }
+    if (is_search()) {
+        wp_enqueue_script('search-podcasts-swipermin', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.1.11', true);
+        wp_enqueue_script('search-podcasts-swiper', get_template_directory_uri()."/assets/js/Podcasts/swiper-script.js", array(), '11.1.11', true);
     }
     if (is_category('podcasts-archive')) {
         wp_enqueue_script('podcasts-swipermin', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), '11.1.11', true);

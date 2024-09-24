@@ -29,7 +29,7 @@
 /* CODE TAILIEU */
 
 .wrapper-tailieu {
-  padding: 10vw 3.125rem 10vw 3.125rem;
+  padding: 5vw 3.125rem 5vw 3.125rem;
   background-color: #d9e4e3;
   height: max-content;
   position: relative;
@@ -40,14 +40,13 @@
 
 .tailieu-introduction {
   display: flex;
-  margin-bottom: 20vh;
   flex-direction: column;
   align-items: center;
   gap: 3vh;
 }
 
 .tailieu-introduction h1 {
-  font-size: 5.5vw;
+  font-size: 4.2vw;
   font-weight: 800;
   background: linear-gradient(45deg, var(--color1) 0%, var(--color2)100%);
   background-size: 300% 300%;
@@ -83,13 +82,13 @@
   align-items: center;
   width: 100%;
   height: max-content;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 
 .name-heading {
   position: relative;
-  font-size: 4.5vw;
+  font-size: 3.8vw;
   width: max-content;
 }
 
@@ -164,9 +163,9 @@
 }
 
 .heading-main-card {
-  font-size: 2.2vw;
+  font-size: 1.8vw;
   color: var(--color1);
-  font-weight: 600;
+  font-weight: 700;
   height: max-content;
   max-height: 12vh;
   padding: 0 1vw 0 1vw;
@@ -182,7 +181,7 @@
 .description-main-card {
   font-size: 1.2vw;
   color: var(--color1);
-  font-style: normal;
+  font-weight: 400;
   height: max-content;
   max-height: 8vh;
   padding: 0 1vw 0 1vw;
@@ -196,7 +195,7 @@
 
 .hashtag-main-card {
   color: var(--color1);
-  font-weight: bold;
+  font-weight: 600;
   display: flex;
   height: max-content;
   max-height: 7.4vh;
@@ -272,7 +271,7 @@
 }
 
 .heading-smaller-card {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.45vw;
   color: var(--color1);
   overflow: hidden;
@@ -287,7 +286,7 @@
 .description-smaller-card {
   font-size: 1.1vw;
   color: black;
-  font-weight: normal;
+  font-weight: 400;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -310,6 +309,7 @@
     border-radius: 6px;
     color: var(--color5);
     transition: all 0.3s ease;
+    font-weight: 600;
     &:hover {
       color: var(--color3);
     }
@@ -349,28 +349,24 @@
 
 .deonluyen-introduction {
   display: flex;
-  width: 100%;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 2vh;
   height: max-content;
   align-items: center;
-  height: max-content;
   max-height: 10%;
   color: var(--color4);
 }
 
 .deonluyen-introduction>h1 {
-  font-size: 5.5vw;
+  font-size: 4.2vw;
 }
 
 .deonluyen-introduction>h2 {
   display: flex;
   flex-wrap: wrap;
-  height: fit-content;
-  width: 40%;
-  margin-left: auto;
-  font-size: 2vw;
-  font-weight: 100;
-  text-align: end;
+  font-size: 1.6vw;
+  font-weight: 400;
+  text-align: center;
 }
 
 .deonluyen-container-content {
@@ -521,7 +517,6 @@
 /* PODCASTS CODE */
 .wrapper-podcasts {
   width: 100%;
-  padding-top: calc(100% * 4935 / 3456);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -529,14 +524,10 @@
 }
 
 .container-podcasts {
-  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  top: 7vw;
-  left: 3.125rem;
-  width: calc(100% - 6.25rem);
-  height: calc(100% - 14vw);
+  margin: 5vw 3.125rem;
   overflow: hidden;
 }
 
@@ -546,6 +537,7 @@
   flex-direction: column;
   height: max-content;
   align-items: center;
+  margin-bottom: 10vh;
 }
 
 .podcasts-introduction-1 {
@@ -576,7 +568,7 @@
 
 .podcasts-introduction-2>h3 {
   font-size: 2vw;
-  font-weight: lighter;
+  font-weight: 300;
   color: var(--color4);
 }
 
@@ -596,6 +588,7 @@
 .podcasts-content {
   display: flex;
   width: 100%;
+  margin-bottom: 10vh;
 }
 .podcasts-content>img {
   height: 100%;
@@ -606,7 +599,6 @@
 
 .podcasts-content>div {
   max-width: 60%;
-  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -620,7 +612,7 @@
   padding: 0.8vw 1vw 0.8vw 1vw;;
   background-color: var(--color3);
   color: var(--color1);
-  font-weight: 550;
+  font-weight: 600;
   width: max-content;
   border-radius: 10px;
   transition: background-color 0.3s ease, color 0.3s ease-in-out;
@@ -638,34 +630,32 @@
 .podcasts-conclusion {
   display: flex;
   flex-direction: column;
+  margin-top: 5vh;
 }
 
 .podcasts-conclusion-introduction{
   width: 100%;
   align-items: center;
-  position: relative;
   font-size: 3.6vw;
+  height: 3.6vw;
   font-weight: bold;
   display: flex;
 }
 .podcasts-conclusion-heading {
-  display: flex;
-  width: max-content;
   margin-right: 1.5%;
 }
 
 .text-change-list {
   display: flex;
   position: relative;
-  height: 100%;
-  width: 40%;;
+  height: 3.6vw;
 }
 
 .text-change-list>div {
   position: absolute;
-  display: flex;
   width: max-content;
   color: var(--color3);
+  top: 0;
 }
 
 .text-change#first {
@@ -808,38 +798,32 @@
 .wrapper-tools {
   display: flex;
   width: 100%;
-  position: relative;
-  height: 100vh;
+  height: 80vh;
   background-color:#d9e4e3;
 }
 
 .content-tools {
   display: flex;
   width: 45%;
-  height: 100%;
-  position: relative;
   >div {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    height: calc(100% - 10vw);
-    width: calc(100% - 6.25rem);
-    top: 5vw;
-    left: 3.125rem;
+    align-self: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 5vw 3.125rem;
     >h1 {
       display: flex;
       width: 100%;
       align-content: center;
       justify-content: center;
       font-size: 3.5vw;
-      margin-bottom: 18vh;
     }
     >p {
       display: flex;
       width: 100%;
       text-align: center;
       font-size: 1.5vw;
-      margin-bottom: 21vh;
     }
     >a {
       text-decoration: none;

@@ -1,14 +1,17 @@
 /* MUST SELECT */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
 
 :root {
   --ff: "Montserrat", sans-serif;
+  --ff-2: "Lora", serif !important;
   --color1: #17252A;
   --color2: #2B7A78;
   --color3: #3AAFA9;
   --color4: #DEF2F1;
   --color5: #FEFFFF;
-  --color6: #d9e4e3;
+  --color6: #eef7e8;
 }
 ::selection {
   background: var(--color3); /* Background color for selected text */
@@ -244,18 +247,15 @@ body {
 .wrapper-footer {
     display: flex; 
     width: 100%;
-    height: 50vh;
+    padding: 1.5rem 3.125rem;
     background-color: var(--color1);
-    position: relative;
     color: var(--color4);
     >.container-footer {
       display: flex;
       flex-direction: column;
-      position: relative;
-      align-self: center;
-      height: calc(100% - 12vh);
-      left: 3.125rem;
-      width: calc(100% - 6.25rem);
+      width: 100%;
+      background-color: var(--color1);
+      height: 15rem;
       a {
         text-decoration: none;
         color: var(--color4);

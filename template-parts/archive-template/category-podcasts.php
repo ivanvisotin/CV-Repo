@@ -7,7 +7,7 @@
 ?>
 
 <div class="welcome-section"
-    style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/main-image.jpg');">
+    style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/images/Podcasts/podcast-01.jpg');">
     <h1><?php echo $queried_object->name ?></h1>
     <h3><?php echo $queried_object->description ?></h3>
 </div>
@@ -124,8 +124,8 @@
                                 <p><?php echo get_the_excerpt(); ?></p>
                                 <div class="action-buttons">
                                     <a href="<?php the_permalink(); ?>" class="cv-button-small"><img src="<?php bloginfo('template_directory') ?>/assets/images/Main-Page/favicon.png" alt="hello">&nbsp;&nbsp;Xem trên Chạm Văn</a>
-                                    <a href="<?php echo esc_url(get_post_meta(get_the_ID(), 'facebook_link', true)); ?>" class="facebook-button-small"><i class="fa-brands fa-soundcloud">&nbsp;&nbsp; </i>Facebook</a>
-                                    <a href="<?php echo esc_url(get_post_meta(get_the_ID(), 'soundcloud_link', true)); ?>" class="soundcloud-button-small"><i class="fa-brands fa-facebook">&nbsp;&nbsp; </i>Soundcloud</a>
+                                    <a href="<?php echo esc_url(get_post_meta(get_the_ID(), 'facebook_link', true)); ?>" class="facebook-button-small"><i class="fa-brands fa-facebook">&nbsp;&nbsp; </i>Facebook</a>
+                                    <a href="<?php echo esc_url(get_post_meta(get_the_ID(), 'soundcloud_link', true)); ?>" class="soundcloud-button-small"><i class="fa-brands fa-soundcloud">&nbsp;&nbsp; </i>Soundcloud</a>
                                 </div>
                             </div>
                         </div>

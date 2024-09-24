@@ -18,7 +18,7 @@
         </div>
         <div class="actions">
             <a href="<?php echo home_url();?>">Quay về Trang chủ</a>
-            <a href="facebook.com/ivan0id_07" target="_blank">Liên hệ với Admin</a>
+            <a href="https://facebook.com/ivan0id_07" target="_blank">Liên hệ với Admin</a>
         </div>
     </div>
     <? 

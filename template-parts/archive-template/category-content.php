@@ -36,7 +36,7 @@
             }
             if (is_category('content-archive'))
             {
-                echo '<h1 style="font-size: 4.2vw;">Tất cả tài liệu</h1>';
+                echo '<h1 style="font-size: 3.5vw;">Tất cả tài liệu</h1>';
             }
             elseif (long_name($queried_object) === true) {
                 echo '<h1 style="font-size: 4vw;">' . $queried_object->name . '</h1>';
@@ -45,10 +45,6 @@
                 echo '<h1 style="font-size: 3.6vw;">Tài liệu ' . $queried_object->name . ' mới nhất</h1>';
             }
         ?>
-        <div class="wrapper-search">
-            <input type="text" placeholder="Nhập tên tài liệu bạn muốn tìm kiếm">
-            <i class="fas fa-search"></i>
-        </div>
     </div>
     <?php
         $main_category = get_category_by_slug($queried_object->slug);
@@ -81,19 +77,16 @@
                 while ($query->have_posts()) : $query->the_post(); 
     ?>
                     <div class="posts-container"> 
-                        <?php
-                            $image_id = get_post_thumbnail_id(); 
-                            $image_src = wp_get_attachment_image_src($image_id, 'full'); 
-                            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true); 
-                            if (empty($image_alt)) {
-                                $image_alt = get_the_title(); // Fallback to post title
-                            }
-                            if ($image_src) :
-                                $image_url = $image_src[0]; 
-                                echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="posts-image">';
-                            else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="hello" class="posts-image">';
-                            endif; 
+                        <?php if (has_post_thumbnail()) :              
+                                echo get_the_post_thumbnail(get_the_ID(), 'full', [
+                                    'alt' => get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true) ?: get_the_title(),
+                                    'class' => 'posts-image'
+                                ]); 
                         ?>
+                        <?php else : ?>                      
+                                <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg'); ?>" alt="Placeholder" class="posts-image">
+                        <?php endif; ?>
+
                         <div class="posts-content">
                             <a href="<?php the_permalink(); ?>" class="title"><?php the_title(); ?></a>
                             <p class="excerpt"><?php echo get_the_excerpt(); ?></p>

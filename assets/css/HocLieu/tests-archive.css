@@ -46,7 +46,7 @@
             transition: all 0.3s ease;
 
             &:hover {
-                color: var(--color3);
+                color: var(--color2);
                 text-decoration: underline;
                 cursor: pointer;
             }
@@ -81,29 +81,6 @@
             background-color: transparent;
             transition: all 0.3s ease;
         }
-
-        .wrapper-search {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            padding: 3vh 1.5vw 3vh 1.5vw;
-            background-color: var(--color5);
-            border: 0.3px var(--color4) solid;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-
-            >input {
-                border: 0;
-                outline: 0;
-                cursor: pointer;
-                width: 25vw;
-                font-size: 2.1vh;
-            }
-
-            >i {
-                padding-left: 2vw;
-            }
-        }
     }
 
     .container-tests {
@@ -111,7 +88,7 @@
         margin-top: 8vh;
         height: max-content;
         width: 100%;
-        gap: 15vh calc((100% - 88%) / 3);;
+        gap: 8vh calc((100% - 88%) / 3);
         flex-wrap: wrap;
 
         >.card-test {

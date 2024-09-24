@@ -22,7 +22,7 @@
             <li><a class="nav-link" href="<?php echo home_url()?>">Trang chủ</a></li>
             <li>
                 <span class="nav-link" id="hoclieu">Học liệu <i
-                        class="material-icons" style="font-size:1em">arrow_drop_down</i></span>
+                        class="material-icons arrow-down" style="font-size:1em">arrow_drop_down</i></span>
                 <div class="hoclieu-links">
                     <a href="<?php echo home_url('/category/tests-archive')?>"class="hoclieu-link" id="submenu-deonluyen">Đề ôn
                         luyện</a>
@@ -51,10 +51,10 @@
             <li><a class="nav-link" href="<?php echo home_url('/category/podcasts-archive')?>">Podcasts</a></li>
             <li><a class="nav-link" href="<?php echo home_url('/category/tools-archive')?>">Công cụ hỗ trợ</a></li>
         </ul>
-        <div class="wrapper-search-button">
-            <input type="text" id="search-button-main-menu" placeholder="Tìm kiếm...">
-            <i class="fas fa-search" onclick="performSearch()"></i>
-        </div>
+        <form class="wrapper-search-button" method="get" action="<?php echo esc_url(home_url('/')); ?>">
+            <input type="text" value="<?php echo esc_attr(get_search_query()); ?>" name="s" id="search-button-main-menu" placeholder="Tìm kiếm...">
+            <i class="fas fa-search"></i>
+        </form>
         <div class="wrapper-login-button">
             <a href="/Login/login-page.html">Đăng nhập</a>
         </div>
