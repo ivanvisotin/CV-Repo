@@ -77,6 +77,9 @@ function modify_main_query($query) {
         elseif (has_ancestor_with_slug('tests-archive')) {
             $query->set('posts_per_page', 12);
         }
+        elseif (has_ancestor_with_slug('tools-archive')) {
+            $query->set('posts_per_page', 10);
+        }
     }
 }
 add_action('pre_get_posts', 'modify_main_query');
@@ -123,7 +126,11 @@ function chamvan_register_styles() {
         wp_enqueue_style('material-symbol-recommend', "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" , array(), $version, 'all');
         wp_enqueue_style('podcasts-swiper', "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", array(), '11.1.11', 'all');
     }
-    if (single_has_ancestor_with_slug('content-archive')) {
+    if (is_category('tools-archive')) {
+        wp_enqueue_style('podcasts-archive', get_template_directory_uri() . "/assets/css/Tools/tools-archive.css", array(), $version, 'all');
+    }
+    // SINGLE
+    if (single_has_ancestor_with_slug('content-archive') || single_has_ancestor_with_slug('tools-archive')) {
         wp_enqueue_style('content-single', get_template_directory_uri() . "/assets/css/HocLieu/single-content.css", array(), $version, 'all');
     }
 }

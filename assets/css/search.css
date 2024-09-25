@@ -344,6 +344,75 @@
             }
         }
     }
+    >.tools-archive {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 10%;
+        >.title {
+            font-size: 2.1rem;
+            width: 100%;
+            margin-bottom: 3vh;
+        }
+        >.card {
+            width: 45%;
+            height: 25vh;
+            background-color: var(--color5);
+            display: flex;
+            box-shadow: 2px 0 2px rgba(0, 0, 0, 0.4), 0 2px 2px rgba(0, 0, 0, 0.4);
+            border-radius: 7px;
+            >.card-image {
+                width: 40%;
+                object-fit: cover;
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 100%;
+            }
+            >.card-content {
+                padding: 1.5% 4%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 100%;
+                >.name {
+                    font-weight: 600;
+                    font-size: 1.25rem;
+                }
+                >.actions {
+                    display: flex;
+                    gap: 5%;
+                    width: 100%;
+                    >a {
+                        display: flex;
+                        width: 47.5%;
+                        border-radius: 5px;
+                        align-items: center;
+                        justify-content: center; 
+                        font-weight: 500;
+                        transition: all 0.3s ease;
+                        padding: 3% 0;
+                        &.view-post {
+                            background-color: transparent;
+                            border: 2px solid var(--color2);
+                            color: var(--color2);
+                            &:hover {
+                                background-color: var(--color3);
+                                color: var(--color5);
+                            }
+                            
+                        }
+                        &.access {
+                            color: var(--color5);
+                            background-color: var(--color1);
+                            &:hover {
+                                background-color: var(--color2);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     div.not-found {
         margin-top: 8vh;

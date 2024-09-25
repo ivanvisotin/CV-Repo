@@ -34,10 +34,17 @@
             ?>
         </div>
         <div class="tags">
-            <?php 
-                $tags_list = get_the_tags();
-                foreach ($tags_list as $tag) {
-                    echo '<a class="tag" href="' . esc_url(get_tag_link($tag->term_id)) . '">' . $tag->name . '</a>'; 
+            <?php
+                if ($queried_post_cat[0]->slug === 'tools-archive') {
+                    echo '<a class="tag" href="' . esc_url(get_category_link(get_category_by_slug('tools-archive')->term_id)) . '">' . get_category_by_slug('tools-archive')->name . '</a>'; 
+                }
+                else {
+                    $tags_list = get_the_tags();
+                    if ($tags_list) {
+                        foreach ($tags_list as $tag) {
+                            echo '<a class="tag" href="' . esc_url(get_tag_link($tag->term_id)) . '">' . $tag->name . '</a>'; 
+                        }
+                    }
                 }
             ?>
         </div>
@@ -64,8 +71,8 @@
                             'category_name' => $queried_post_cat[0]->slug,
                             'order' => 'DESC',
                             'orderby' => 'date',
-                            'posts_per_page' => 5
-
+                            'posts_per_page' => 5,
+                            'post__not_in' => array(get_the_ID()),
                         );
 
                         $post_query = new WP_Query($args);
@@ -73,7 +80,15 @@
                             while ($post_query->have_posts()): $post_query->the_post();
                     ?>
                     <div class="content-card">
-                        <img src="<?php echo get_template_directory_uri().'/assets/images/Main-Page/placeholder-image.jpg?>'?> alt="">
+                        <?php if (has_post_thumbnail()) :              
+                            echo get_the_post_thumbnail(get_the_ID(), 'full', [
+                                'alt' => get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true) ?: get_the_title(),
+                                'class' => 'card-image'
+                            ]); 
+                        ?>
+                        <?php else : ?>                      
+                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg'); ?>" alt="Placeholder" class="card-image">
+                        <?php endif; ?>
                         <a href="<?php the_permalink(); ?>"><?php the_title();?></a>
                     </div>
                     <?php 

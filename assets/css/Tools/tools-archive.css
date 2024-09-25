@@ -22,23 +22,20 @@
         font-size: 2.3vw;
         font-weight: 400;
     }
-
 }
 
-
-/* CODE MAIN SECTION */
 .main-wrapper {
     flex-direction: column;
     display: flex;
     position: relative;
     width: auto;
-    padding: 5rem 3.125rem 5rem 3.125rem;
+    padding: 5vw 3.125rem 5vw 3.125rem;
     background-color: var(--color6);
     height: max-content;
 
     >.breadcrumbs-list {
         display: flex;
-        margin-bottom: 2vw;
+        margin-bottom: 1.5rem;
 
         >a {
             font-size: 1.35vw;
@@ -54,97 +51,77 @@
         }
     }
 
-    >.navigation {
-        display: flex;
-        width: 100%;
-        height: max-content;
-        justify-content: space-between;
-        align-items: center;
+    >.introduction {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 3.5rem;
     }
 
-    >.posts-container {
+    >.content {
         display: flex;
+        flex-wrap: wrap;
         width: 100%;
-        margin-top: 3vw;
-        height: auto;
-        background-color: var(--color5);
-        border-radius: 10px;
-        transition: all 0.5s ease;
-        box-shadow: 3px 0 rgba(0, 0, 0, 0.3), 0px 3px rgba(0, 0, 0, 0.3);
-        &:hover {
-            transform: translateY(-10px);
-        }
-
-        >.posts-image {
-            width: 40%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px 0 0 10px;
-
-        }
-
-        >.posts-content {
-            width: 60%;
-            height: 100%;
-            padding: 2% 5% 2% 5%;
+        gap: 10%;
+        >.card {
+            width: 45%;
+            height: 25vh;
+            background-color: var(--color5);
             display: flex;
-            flex-direction: column;
-            height: inherit;
-            justify-content: space-between;
-
-            >a.title {
-                font-size: 1.8vw;
-                font-weight: 600;
-                text-decoration: none;
-                color: var(--color1);
-                transition: all 0.3s ease;
-                display: -webkit-box;
-                overflow: hidden;
-                -webkit-line-clamp: 2;
-                line-clamp: 2;
-                -webkit-box-orient: vertical;
-                text-overflow: ellipsis;
-
-                &:hover {
-                    color: var(--color3);
-                }
+            box-shadow: 2px 0 2px rgba(0, 0, 0, 0.4), 0 2px 2px rgba(0, 0, 0, 0.4);
+            border-radius: 7px;
+            >.card-image {
+                width: 40%;
+                object-fit: cover;
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+                height: 100%;
             }
-
-            >p.excerpt {
-                font-size: 1.25vw;
-            }
-
-            >div.info {
+            >.card-content {
+                padding: 1.5% 4%;
                 display: flex;
-                justify-content: space-between;
-
-                >div.tags {
+                flex-direction: column;
+                justify-content: space-around;
+                width: 100%;
+                >.name {
+                    font-weight: 600;
+                    font-size: 1.25rem;
+                }
+                >.actions {
                     display: flex;
-                    gap: 1.2vw;
-
-                    >a.tag {
-                        font-size: 1vw;
-                        padding: 0.5vw 1vw 0.5vw 1vw;
-                        border-radius: 8px;
-                        color: var(--color1);
-                        background-color: var(--color3);
+                    gap: 5%;
+                    width: 100%;
+                    >a {
+                        display: flex;
+                        width: 47.5%;
+                        border-radius: 5px;
+                        align-items: center;
+                        justify-content: center; 
+                        font-weight: 500;
                         transition: all 0.3s ease;
-
-                        &:hover {
+                        padding: 3% 0;
+                        &.view-post {
+                            background-color: transparent;
+                            border: 2px solid var(--color2);
+                            color: var(--color2);
+                            &:hover {
+                                background-color: var(--color3);
+                                color: var(--color5);
+                            }
+                            
+                        }
+                        &.access {
+                            color: var(--color5);
                             background-color: var(--color1);
-                            color: var(--color3);
+                            &:hover {
+                                background-color: var(--color2);
+                            }
                         }
                     }
                 }
-
-                >div.date {
-                    font-size: 1.1vw;
-                }
             }
         }
     }
-
-    .pagination {
+    >.pagination {
         margin-top: 10vh;
         display: flex;
         justify-content: center;
@@ -176,5 +153,4 @@
             }
          }
     }
-
 }

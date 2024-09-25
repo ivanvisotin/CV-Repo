@@ -127,10 +127,12 @@
                         margin-bottom: 2.7vh;
                         height: auto;
                         align-items: center;
-                        >img {
+                        max-height: 9vh;
+                        >.card-image {
                             max-width: 30%;
                             object-fit: cover;
                             margin-right: 3%;
+                            height: 100%;
                         }
                         >a {
                             font-size: 16px;
@@ -139,6 +141,7 @@
                             overflow: hidden;
                             font-style: italic;
                             -webkit-line-clamp: 3;
+                            line-clamp: 3;
                             -webkit-box-orient: vertical;
                             text-overflow: ellipsis;
                             color: var(--color1);

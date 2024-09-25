@@ -18,10 +18,6 @@
         <?php 
             echo '<h1 style="font-size: 3vw;">Các tài liệu về ' . $queried_object->name . '</h1>';
         ?>
-        <div class="wrapper-search">
-                <input type="text" placeholder="Nhập tên tài liệu bạn muốn tìm kiếm">
-                <i class="fas fa-search"></i>
-        </div>
     </div>
 <?php 
     $tag_slug = $queried_object->slug;

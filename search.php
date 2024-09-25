@@ -2,6 +2,7 @@
     get_header();
  ?>
 
+
 <div class="main-wrapper">
     <div class="page-header">
         <h1 class="page-title">
@@ -11,7 +12,7 @@
     </div>
     <?php if (have_posts()) : ?>
 
-        <!-- POSTS -->
+        <!-- CONTENT -->
         <?php 
             $args = array(
                 's' => get_search_query(),
@@ -53,7 +54,7 @@
             endif;
             wp_reset_postdata();
         ?>
-        <!-- END POSTS -->
+        <!-- END CONTENT -->
         
         <!-- TESTS -->
         <?php 
@@ -149,13 +150,55 @@
                     <div class="swiper-pagination swiper-pagination2024"></div>
                     <div class="swiper-button-prev swiper-button-prev2024"></div>
                     <div class="swiper-button-next swiper-button-next2024"></div>
-            </div>
+                </div>
             <?php 
-                endif;
                 echo '</div>';
+                endif;
             wp_reset_postdata();
             ?>
         <!-- END PODCASTS -->
+
+        <!-- TOOLS -->
+        <?php 
+            $args = array(
+                's' => get_search_query(),
+                'category_name' => 'tools-archive',
+                'posts_per_page' => -1
+            );
+            $tools_archive = new WP_Query($args);
+            if ($tools_archive->have_posts()):
+        ?>
+            <div class="tools-archive archive-section">
+                <h1 class="title"><span class="material-symbols-outlined" style="align-self: center;">robot_2</span>&nbsp;Công cụ hỗ trợ</h1>
+            <?php 
+                while ($tools_archive->have_posts()):
+                    $tools_archive->the_post();
+            ?>
+                <div class="card">
+                    <?php if (has_post_thumbnail()) :              
+                        echo get_the_post_thumbnail(get_the_ID(), 'full', [
+                            'alt' => get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true) ?: get_the_title(),
+                            'class' => 'card-image'
+                        ]); 
+                    ?>
+                    <?php else : ?>                      
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg'); ?>" alt="Placeholder" class="card-image">
+                    <?php endif; ?>
+                    <div class="card-content">
+                        <span class="name"><?php echo get_post_meta(get_the_ID(), 'name', true); ?></span>
+                        <div class="actions">
+                            <a href="<?php the_permalink(); ?>" class="view-post">Tìm hiểu thêm</a>
+                            <a href="<?php echo esc_url(get_post_meta(get_the_ID(), 'access', true)); ?>" class="access" target="_blank">Sử dụng</a>
+                        </div>
+                    </div>
+                </div>
+        <?php 
+            endwhile;
+            echo '</div>';
+            endif;
+            wp_reset_postdata();
+        ?>
+        <!-- END TOOLS -->
 
     <?php else: ?>
         <div class="not-found">
