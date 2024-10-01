@@ -13,15 +13,6 @@
         <?php 
             echo '<a href="'.home_url().'">Trang chủ</a>';
             echo '<i style="font-size: 1.35vw;">&nbsp; / &nbsp;</i>';
-            $current_cat_id = $queried_object->term_id;
-            $ancestors = get_ancestors($current_cat_id, 'category');
-            $ancestors = array_reverse($ancestors);
-            foreach ($ancestors as $ancestor_id)
-            {
-                $ancestor = get_category($ancestor_id);
-                echo '<a href="' . get_category_link($ancestor->term_id) . '">' . $ancestor->name . '</a>';
-                echo '<i style="font-size: 1.35vw;">&nbsp; / &nbsp;</i>';
-            }
             echo '<a href="' . get_category_link($queried_object) . '">' . $queried_object->name . '</a>';
         ?>
     </div>

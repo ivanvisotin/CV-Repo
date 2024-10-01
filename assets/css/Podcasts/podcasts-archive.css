@@ -220,7 +220,7 @@
                     display: flex;
                     height: max-content;
                     padding-bottom: 1vh;
-                    margin-bottom: 5vh;
+                    margin-bottom: 4vh;
 
                     >.swiper-wrapper {
                         .podcasts-card {

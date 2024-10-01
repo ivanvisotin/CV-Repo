@@ -46,8 +46,8 @@
 }
 
 .tailieu-introduction h1 {
-  font-size: 4.2vw;
-  font-weight: 800;
+  font-size: 4vw;
+  font-weight: 700;
   background: linear-gradient(45deg, var(--color1) 0%, var(--color2)100%);
   background-size: 300% 300%;
   background-clip: text;
@@ -88,7 +88,7 @@
 
 .name-heading {
   position: relative;
-  font-size: 3.8vw;
+  font-size: 3.5vw;
   width: max-content;
 }
 
@@ -107,7 +107,7 @@
 
 .btn-view-all a {
   color: inherit;
-  font-weight: 1000;
+  font-weight: 600;
   max-height: 16px;
 }
 
@@ -339,10 +339,10 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 10vw;
+  top: 5vw;
   left: 3.125rem;
   width: calc(100% - 6.25rem);
-  height: calc(100% - 20vw);
+  height: calc(100% - 10vw);
   justify-content: space-between;
   color: var(--color5);
 }

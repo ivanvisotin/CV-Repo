@@ -17,18 +17,25 @@
                 $post_id = get_the_ID();
                 $categories = get_the_category($post_id);
                 $parent_categories = [];
-                if (!empty($categories)) {
-                    $category = $categories[0]; // Get the first assigned category
-                    while ($category->parent) {
-                        $category = get_category($category->parent); // Get the parent category
-                        $parent_categories[] = $category; // Add to array
-                    }
-                }
-                $parent_categories = array_reverse($parent_categories);
-                foreach ($parent_categories as $categories_id)
-                {
-                    echo '<a href="' . get_category_link($categories_id) . '">' . $categories_id->name . '</a>';
+                if ($categories[0]->slug === 'tools-archive') {
+                    $tools_archive  = get_category_by_slug('tools-archive');
+                    echo '<a href="' . get_category_link($tools_archive) . '">' . $tools_archive->name . '</a>';
                     echo '<i style="font-size: clamp(0.8rem, 1rem, 1.4rem);">&nbsp; / &nbsp;</i>';
+                }
+                else {
+                    if (!empty($categories)) {
+                        $category = $categories[0]; // Get the first assigned category
+                        while ($category->parent) {
+                            $category = get_category($category->parent); // Get the parent category
+                            $parent_categories[] = $category; // Add to array
+                        }
+                    }
+                    $parent_categories = array_reverse($parent_categories);
+                    foreach ($parent_categories as $categories_id)
+                    {
+                        echo '<a href="' . get_category_link($categories_id) . '">' . $categories_id->name . '</a>';
+                        echo '<i style="font-size: clamp(0.8rem, 1rem, 1.4rem);">&nbsp; / &nbsp;</i>';
+                    }
                 }
                 echo '<span class="truncate">' .get_the_title(). '</span>'; 
             ?>
