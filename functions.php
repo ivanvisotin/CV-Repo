@@ -125,17 +125,20 @@
         wp_enqueue_style('material-icons', "https://fonts.googleapis.com/icon?family=Material+Icons", array(), '142s', 'all');
         wp_enqueue_style('header-footer', get_template_directory_uri() . "/assets/css/header-footer.css", array(), $version, 'all');
         wp_enqueue_style('material-symbols', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0', array(), null, 'all');
+        //HOME
         if (is_front_page())
         {
             wp_enqueue_style('mainpage', get_template_directory_uri() . "/assets/css/Main-Page/main-page.css", array('mainpage-swiper'), $version, 'all');
             wp_enqueue_style('mainpage-aos', "https://unpkg.com/aos@next/dist/aos.css", array(), '3.0.0', 'all');
             wp_enqueue_style('mainpage-swiper', "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", array(), '11.1.11', 'all');
         }
+        //SEARCH
         if (is_search())
         {
             wp_enqueue_style('search-podcasts-swiper', "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css", array(), '11.1.11', 'all');
             wp_enqueue_style('search', get_template_directory_uri() . "/assets/css/search.css", array(), $version, 'all');
         }
+        //CATEGORY
         if (has_ancestor_with_slug('content-archive') || tag_slugs() === 'content')
         {
             wp_enqueue_style('content-archive', get_template_directory_uri() . "/assets/css/HocLieu/content-archive.css", array(), $version, 'all');
@@ -151,12 +154,26 @@
         if (is_category('tools-archive')) {
             wp_enqueue_style('podcasts-archive', get_template_directory_uri() . "/assets/css/Tools/tools-archive.css", array(), $version, 'all');
         }
-        // SINGLE
+        // POSTS
         if (single_has_ancestor_with_slug('content-archive') || single_has_ancestor_with_slug('tools-archive')) {
             wp_enqueue_style('content-single', get_template_directory_uri() . "/assets/css/HocLieu/single-content.css", array(), $version, 'all');
         }
         if (single_has_ancestor_with_slug('tests-archive')) {
             wp_enqueue_style('test-single', get_template_directory_uri() . "/assets/css/HocLieu/single-test.css", array(), $version, 'all');
+        }
+        if (single_has_ancestor_with_slug('podcasts-archive')) {
+            wp_enqueue_style('podcast-single', get_template_directory_uri() . "/assets/css/Podcasts/single-podcast.css", array(), $version, 'all');
+            wp_enqueue_style('podcasts-plyr', "https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.css", array(), '3.7.8', 'all');
+        }
+        //PAGES
+        if (is_page('gioi-thieu')) {
+            wp_enqueue_style('about-page', get_template_directory_uri() . "/assets/css/Contribution/about.css", array(), $version, 'all');
+        }
+        if (is_page('ghi-cong-giay-phep-su-dung')) {
+            wp_enqueue_style('attribution-page', get_template_directory_uri() . "/assets/css/Contribution/attribution.css", array(), $version, 'all');
+        }
+        if (is_page('account')) {
+            wp_enqueue_style('account-page', get_template_directory_uri() . "/assets/css/Login/account.css", array(), $version, 'all');
         }
     }
     add_action('wp_enqueue_scripts', 'chamvan_register_styles');
@@ -186,6 +203,11 @@
             wp_enqueue_script('test-timer', get_template_directory_uri()."/assets/js/HocLieu/Deonluyen/test-timer.js", array(), '1.0.0', true);
             wp_enqueue_script('results', get_template_directory_uri()."/assets/js/HocLieu/Deonluyen/results.js", array(), '1.0.0', true);
             wp_enqueue_script('results-display', get_template_directory_uri()."/assets/js/HocLieu/Deonluyen/results-display.js", array(), '1.0.0', true);
+        }
+        if (single_has_ancestor_with_slug('podcasts-archive')) {
+            wp_enqueue_script('podcasts-plyr', "https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.js", array(), '3.7.0', true);
+            wp_enqueue_script('plyr-init', get_template_directory_uri()."/assets/js/Podcasts/plyr.js", array(), '3.7.0', true);
+            wp_enqueue_script('minimize-excerpt', get_template_directory_uri()."/assets/js/Podcasts/minimize-excerpt.js", array(), '1.0.0', true);
         }
     }
     add_action('wp_enqueue_scripts', 'chamvan_register_scripts');

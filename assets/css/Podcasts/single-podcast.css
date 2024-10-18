@@ -1,0 +1,118 @@
+:root {
+    --plyr-color-main: var(--color2);
+}
+
+body {
+    background-color: var(--color6);
+}
+
+.main-wrapper {
+    display: flex;
+    width: calc(100% - 4%);
+    margin: 3% 2%;
+    flex-direction: column;
+}
+
+.category-link {
+    display: flex;
+    align-self: center;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 6px 15px;
+    margin-bottom: 2vh;
+    border-radius: 8px;
+    background-color: var(--color1);
+    color: var(--color3);
+    transition: all 0.3s ease;
+}
+
+.category-link:hover {
+    color: var(--color1);
+    background-color: var(--color3);
+}
+
+.video-wrapper {
+    align-self: center;
+    padding: 1%;
+    border-radius: 10px;
+    width: 80%;
+    margin-bottom: 2vh;
+}
+
+.video-title {
+    font-size: 30px;
+    font-weight: 700;
+    font-family: var(--ff-2);
+    display: flex;
+    width: 85%;
+    align-self: center;
+    text-align: center;
+}
+
+.plyr {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+    gap: 0.5rem;
+    >.date {
+        margin-right: 2rem;
+    }
+    >.views {
+        margin-right: 2rem;
+    }
+}
+
+.excerpt {
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color5);
+    border-radius: 12px;
+    width: 80%;
+    align-self: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    padding: 2%;
+}
+
+.excerpt-header {
+    display: flex;
+    width: 100%;
+    font-size: 22px;
+    font-weight: 700;
+    padding-bottom: 2vh;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.excerpt-content {
+    display: flex;
+    padding-top: 2vh;
+    font-size: 16px;
+}
+
+.comment-section {
+    padding-top: 2vh;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    min-height: 15vh;
+    >.introduction {
+        padding-top: 5vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        >h2 {
+            font-family: var(--ff-2);
+        }
+        >span {
+            margin-top: 3vh;
+            font-size: 15px;
+            font-weight: 400;
+        }
+    }
+}

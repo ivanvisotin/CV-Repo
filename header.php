@@ -15,7 +15,7 @@
     <div style="width: 100%; height: 5rem;" id="anchor-start-page"></div>
 
     <header class="wrapper-nav-bar">
-        <a href="<?php echo home_url()?>">
+        <a class="wrapper-logo" href="<?php echo home_url()?>">
             <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/logo.png" alt="Logo" id="logo">
         </a>
         <ul class="wrapper-nav-links">
@@ -51,11 +51,24 @@
             <li><a class="nav-link" href="<?php echo home_url('/category/podcasts-archive')?>">Podcasts</a></li>
             <li><a class="nav-link" href="<?php echo home_url('/category/tools-archive')?>">Công cụ hỗ trợ</a></li>
         </ul>
-        <form class="wrapper-search-button" method="get" action="<?php echo esc_url(home_url('/')); ?>">
-            <input type="text" value="<?php echo esc_attr(get_search_query()); ?>" name="s" id="search-button-main-menu" placeholder="Tìm kiếm...">
-            <i class="fas fa-search"></i>
-        </form>
+        <div class="container-search-button">
+            <form class="wrapper-search-button" method="get" action="<?php echo esc_url(home_url('/')); ?>">
+                <input type="text" value="<?php echo esc_attr(get_search_query()); ?>" name="s" id="search-button-main-menu" placeholder="Tìm kiếm...">
+                <i class="fas fa-search"></i>
+            </form>
+        </div>
         <div class="wrapper-login-button">
-            <a href="/Login/login-page.html">Đăng nhập</a>
+            <?php 
+                if (!is_user_logged_in()) {
+                    echo '<a href="'. get_page_link(get_page_by_path('account')->ID) . '">Đăng nhập</a>';
+                }
+                else {
+                    $user = wp_get_current_user();
+                    $user_id = $user->ID;
+                    echo get_avatar($user_id);
+                    echo '<a href="'. get_page_link(get_page_by_path('account')->ID) . '">' . $user->first_name .'</a>';
+                }
+            ?>
+            
         </div>
     </header>

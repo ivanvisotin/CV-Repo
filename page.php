@@ -1,19 +1,18 @@
-<?php
-    get_header();
-?>
 
-<?php 
-    if (is_page('about-page')) {
+<?php
+    if (is_page('gioi-thieu')) {
+        get_header();
         get_template_part('template-parts/page-template/page', 'about');
+        get_footer();
     }
-    elseif (is_page('attribution-page')) {
+    elseif (is_page('ghi-cong-giay-phep-su-dung')) {
+        get_header();
         get_template_part('template-parts/page-template/page', 'attribution');
+        get_footer();
     }
-    elseif (is_page('tools-page')) {
-        get_template_part('template-parts/page-template/page', 'tools');
+    elseif (is_page('account')) {
+        wp_head();
+        get_template_part('template-parts/page-template/page', 'account'); 
+        wp_footer();
     }
-?>
-
-<?php
-    get_footer();
 ?>

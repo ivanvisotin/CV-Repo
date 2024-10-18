@@ -5,7 +5,6 @@
 .wrapper-main-image {
   display: flex;
   position: relative;
-  left: 0;
   width: 100%;
   height: max-content;
 }
@@ -24,6 +23,14 @@
   top: calc(5rem + 20vh);
   left: 3.125rem;
   color: var(--color5);
+  >h1 {
+    font-size: 4.5rem;
+    font-family: var(--ff-2);
+  }
+  >h2 {
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
 }
 
 /* CODE TAILIEU */
@@ -35,7 +42,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10vh;
+  gap: 5vh;
 }
 
 .tailieu-introduction {
@@ -43,16 +50,24 @@
   flex-direction: column;
   align-items: center;
   gap: 3vh;
+  margin-bottom: 3vh;
 }
 
 .tailieu-introduction h1 {
-  font-size: 4vw;
+  font-size: 3.5rem;
   font-weight: 700;
+  font-family: var(--ff-2);
   background: linear-gradient(45deg, var(--color1) 0%, var(--color2)100%);
   background-size: 300% 300%;
   background-clip: text;
   color: transparent;
   animation: bg 10s ease infinite;
+}
+
+.tailieu-introduction h2 {
+  font-size: 1.25rem; 
+  font-weight: 400; 
+  color: #17252A;
 }
 
 @keyframes bg {
@@ -108,7 +123,7 @@
 .btn-view-all a {
   color: inherit;
   font-weight: 600;
-  max-height: 16px;
+  font-size: 15px;
 }
 
 .btn-view-all:hover {
@@ -118,7 +133,7 @@
 }
 
 .wrapper-main-card {
-  border-right: 0.3px solid #bdbdbd;
+  border-right: 1px solid rgba(0, 0, 0, .1);
   width: 52.5%;
   padding-right: 2.5%;
   height: max-content;
@@ -131,15 +146,18 @@
   background-color: var(--color4);
   height: 80vh;
   width: 100%;
-  gap: 3vh;
   transition: all 0.4s ease;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .4);
   overflow-x: hidden;
   overflow-y: hidden;
-  >a {
+  div.content-card {
+    flex: 1;
+    padding: 3% 1.5%;
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    justify-content: space-between;
+  }
+  a {
     &:hover>h2 {
       color: var(--color3);
     }
@@ -163,11 +181,10 @@
 }
 
 .heading-main-card {
-  font-size: 1.8vw;
+  font-size: 1.5rem;
   color: var(--color1);
   font-weight: 700;
   height: max-content;
-  max-height: 12vh;
   padding: 0 1vw 0 1vw;
   overflow: hidden;
   display: -webkit-box;
@@ -179,11 +196,10 @@
 }
 
 .description-main-card {
-  font-size: 1.2vw;
+  font-size: 1rem;
   color: var(--color1);
   font-weight: 400;
   height: max-content;
-  max-height: 8vh;
   padding: 0 1vw 0 1vw;
   overflow: hidden;
   display: -webkit-box;
@@ -198,7 +214,6 @@
   font-weight: 600;
   display: flex;
   height: max-content;
-  max-height: 7.4vh;
   gap: 0.3rem;
   padding: 0 1vw 0 1vw;
   a.tag {
@@ -221,7 +236,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 10vh;
-  border-left: 0.3px solid #bdbdbd;
+  border-left: 1px solid rgba(0, 0, 0, .1);
   width: 47.5%;
   padding-left: 2.5%;
   height: 100%;
@@ -358,15 +373,13 @@
 }
 
 .deonluyen-introduction>h1 {
-  font-size: 4.2vw;
+  font-size: 3.5rem;
+  font-family: var(--ff-2);
 }
 
 .deonluyen-introduction>h2 {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 1.6vw;
+  font-size: 1.25rem;
   font-weight: 400;
-  text-align: center;
 }
 
 .deonluyen-container-content {
@@ -556,35 +569,6 @@
   text-shadow: 2px 3px 1px #dac2d8;
 }
 
-.podcasts-introduction-2 {
-  align-self: center;
-  width: 70%;
-  display: flex;
-  height: auto;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 1.5vw;
-}
-
-.podcasts-introduction-2>h3 {
-  font-size: 2vw;
-  font-weight: 300;
-  color: var(--color4);
-}
-
-.podcasts-introduction-2>a>img {
-  width: 3.3vw;
-  height: 3.3vw;
-  border-radius: 50%;
-  transition: all 0.1s ease;
-}
-
-.podcasts-introduction-2>a>img:hover {
-  transform: scale(1.2);
-  border: 3px solid var(--color3);
-  border-radius: 50%;
-}
-
 .podcasts-content {
   display: flex;
   width: 100%;
@@ -624,96 +608,12 @@
 }
 
 .podcasts-content#second>div {
-  gap: 5vw;
+  gap: 3.5rem;
 }
 
 .podcasts-conclusion {
   display: flex;
   flex-direction: column;
-  margin-top: 5vh;
-}
-
-.podcasts-conclusion-introduction{
-  width: 100%;
-  align-items: center;
-  font-size: 3.6vw;
-  height: 3.6vw;
-  font-weight: bold;
-  display: flex;
-}
-.podcasts-conclusion-heading {
-  margin-right: 1.5%;
-}
-
-.text-change-list {
-  display: flex;
-  position: relative;
-  height: 3.6vw;
-}
-
-.text-change-list>div {
-  position: absolute;
-  width: max-content;
-  color: var(--color3);
-  top: 0;
-}
-
-.text-change#first {
-  animation: tc1 10s infinite;
-}
-.text-change#second {
-  animation: tc2 10s infinite;
-}
-.text-change#third {
-  animation: tc3 10s infinite;
-}
-.text-change#fourth {
-  animation: tc4 10s infinite;
-}
-
-@keyframes tc1 {
-  0% {
-    opacity: 0;
-  }
-  12.5% {
-    opacity: 1;
-  }
-  25%, 100% {
-    opacity: 0;
-  }
-}
-@keyframes tc2 {
-  0%, 25% {
-    opacity: 0;
-  }
-  37.5% {
-    opacity: 1;
-  }
-  50%, 100% {
-    opacity: 0;
-  }
-}
-@keyframes tc3 {
-  0%, 50% {
-    opacity: 0;
-  }
-  62.5% {
-    opacity: 1;
-  }
-  75%, 100% {
-    opacity: 0;
-  }
-}
-@keyframes tc4 {
-  0%, 75% {
-    opacity: 0;
-  }
-  87.5% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 .podcasts-conclusion-content {
@@ -728,9 +628,8 @@
   width: 100%;
   height: max-content;
   font-size: 1.7vw;
-  font-weight: light;
-  margin-bottom: 6vh;
-  margin-top: 12vh;
+  font-weight: 700;
+  margin-bottom: 5vh;
 }
 
 .podcasts-conclusion-half {
@@ -761,11 +660,11 @@
   flex-direction: column;
   >h1 {
     align-self: center;
-    font-size: 2vw;
+    font-size: 1.6rem;
     margin-bottom: 3vh;
   }
   >p {
-    font-size: 1.4vw;
+    font-size: 1.1rem;
     text-align: center;
     margin-bottom: 5vh;
   }
@@ -798,7 +697,7 @@
 .wrapper-tools {
   display: flex;
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   background-color:#d9e4e3;
 }
 
@@ -817,19 +716,20 @@
       width: 100%;
       align-content: center;
       justify-content: center;
-      font-size: 3.5vw;
+      font-size: 3.5rem;
+      font-family: var(--ff-2);
     }
     >p {
       display: flex;
       width: 100%;
       text-align: center;
-      font-size: 1.5vw;
+      font-size: 1.25rem;
     }
     >a {
       text-decoration: none;
       color: var(--color1);
-      font-weight: bold;
-      font-size: 2vw;
+      font-weight: 600;
+      font-size: 1.5rem;
       padding: 3vh 0 3vh 0;
       display: flex;
       width: 60%;

@@ -80,6 +80,13 @@
                 margin-right: 2rem;
             }
         }
+        >.thumbnail {
+            display: flex;
+            width: 65%;
+            height: auto;
+            align-self: center;;
+            margin: 2rem 0;
+        }
     }
 
     >.content {
@@ -93,9 +100,12 @@
             width: 62.5%;
             margin-right: 5%;
             >.excerpt {
-                font-size: 1.25rem;
-                font-weight: bold;
-                margin-bottom: 2rem;
+                >p {
+                    font-size: 21px;
+                    font-weight: 700;
+                    margin-bottom: 30px;
+                    line-height: 24px; 
+                }
             }
         }
     
@@ -156,12 +166,29 @@
         }
     }
     >.comment-section {
-        height: 80vh;
+        min-height: 15vh;
+        >.introduction {
+            padding-top: 5vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            >h2 {
+                font-family: var(--ff-2);
+            }
+            >span {
+                margin-top: 3vh;
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
     }
 
     /* WORDPRESS CLASSES */
-    .paragraph {
-        font-size: 15px !important;
-        margin-bottom: 30px !important;
+    p {
+        font-size: 16px; 
+        line-height: 22px;
+        margin-bottom: 20px;
+        text-align: justify;
     }
 }

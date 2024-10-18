@@ -36,13 +36,13 @@
             }
             if (is_category('content-archive'))
             {
-                echo '<h1 style="font-size: 3.5vw;">Tất cả tài liệu</h1>';
+                echo '<h1 style="font-size: 2.8vw;">Tất cả tài liệu</h1>';
             }
             elseif (long_name($queried_object) === true) {
                 echo '<h1 style="font-size: 4vw;">' . $queried_object->name . '</h1>';
             }
             else {
-                echo '<h1 style="font-size: 3.6vw;">Tài liệu ' . $queried_object->name . ' mới nhất</h1>';
+                echo '<h1 style="font-size: 2.8vw;">Tài liệu ' . $queried_object->name . ' mới nhất</h1>';
             }
         ?>
     </div>

@@ -1,5 +1,4 @@
 <?php 
-    get_header();
     $queried_object = get_queried_object();
 ?>
 
@@ -73,7 +72,3 @@
         wp_reset_postdata();
     ?>
 </div>
-
-<?php 
-    get_footer();
-?>

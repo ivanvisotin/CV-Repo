@@ -1,0 +1,27 @@
+.main-wrapper {
+    background-color: var(--color6);
+    display: flex;
+    flex-direction: column;
+    padding: 5vw 3.125rem;
+    width: 100%;
+}
+
+.introduction {
+    align-self: center;
+    display: flex;
+    font-size: 3rem;
+    margin-bottom: 10vh;
+}
+.header {
+    font-family: var(--ff-2);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5vh;
+}
+
+.content {
+    font-size: 1.05rem;
+    line-height: 1.5rem;
+    margin-bottom: 7vh;
+    font-weight: 400;
+}

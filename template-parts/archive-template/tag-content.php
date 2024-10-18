@@ -16,7 +16,7 @@
     </div>
     <div class="navigation">
         <?php 
-            echo '<h1 style="font-size: 3vw;">Các tài liệu về ' . $queried_object->name . '</h1>';
+            echo '<h1 style="font-size: 2.8vw;">Tag: ' . $queried_object->name . '</h1>';
         ?>
     </div>
 <?php 

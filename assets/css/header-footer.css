@@ -44,9 +44,8 @@ body {
   background-color: var(--color5);
   height: 5rem;
   position: fixed;
+  padding: 0 3.125rem;
   width: 100%;
-  top: 0;
-  left: 0;
   justify-content: space-between;
   display: flex;
   align-items: center;
@@ -63,11 +62,9 @@ body {
   height: 55px;
   width: 76px;
   margin-right: 3.125rem;
-  margin-left: 3.125rem;
 }
 
 .wrapper-nav-links {
-  position: relative;
   list-style-type: none;
   display: flex;
   align-items: center;
@@ -93,6 +90,12 @@ body {
   transform: translateY(-3px);
 }
 
+.container-search-button {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .wrapper-search-button {
   background-color: var(--color5);
   margin-right: 25px;
@@ -120,7 +123,7 @@ body {
 }
 
 .wrapper-search-button input.expanded {
-  width: 269px;
+  width: 250px;
   cursor: pointer;
 }
 
@@ -134,8 +137,12 @@ body {
   font-size: 23px;
 }
 
+/* LOGIN */
 .wrapper-login-button {
-  margin-right: 3.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .wrapper-login-button>a {
@@ -150,6 +157,7 @@ body {
   cursor: pointer;
 }
 
+/* DROPDOWNS */
 .hoclieu-links {
   display: none;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .4);

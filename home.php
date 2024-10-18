@@ -5,15 +5,15 @@
     <div class="wrapper-main-image">
         <img class="main-image" src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/main-image.jpg" alt="Main-Image">
         <div class="main-text">
-            <h1 style="font-size: 5vw">Chạm Văn</h1>
-            <h2 style="font-size: 1.54vw; font-weight: 400">Khơi nguồn cảm hứng văn chương</h2>
+            <h1>Chạm Văn</h1>
+            <h2>Khơi nguồn cảm hứng văn chương</h2>
         </div>
     </div>
 
     <div class="wrapper-tailieu">
         <div class="tailieu-introduction">
             <h1>Tài liệu tham khảo</h1>
-            <h2 style="font-size: 1.8vw; font-weight: 400; color: #17252A">Các tài liệu hữu ích cho bạn phát triển mọi
+            <h2>Các tài liệu hữu ích cho bạn phát triển mọi
             kĩ năng</h2>
         </div>
 
@@ -48,20 +48,22 @@
                         if ($image_src) :
                             $image_url = $image_src[0]; 
                             echo ' <img src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" class="image-main-card">';
-                        else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card" class="image-main-card">';
+                        else: echo '<img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card" class="image-main-card">';
                         endif; 
                     ?>
-                    <a href="<?php echo esc_url(get_permalink());?>">
-                        <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                    <div class="content-card">
+                        <a href="<?php echo esc_url(get_permalink());?>">
+                            <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                        </a>
                         <h4 class="description-main-card"><?php echo get_the_excerpt(); ?></h4>
-                    </a>
-                    <div class="hashtag-main-card">
-                        <?php 
-                            $tags = get_the_tags();
-                            foreach ($tags as $tag) {
-                                echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
-                            }
-                        ?>
+                        <div class="hashtag-main-card">
+                            <?php
+                                $tags = get_the_tags();
+                                foreach ($tags as $tag) {
+                                    echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
                 <?php  
@@ -156,17 +158,19 @@
                         else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card" class="image-main-card">';
                         endif; 
                     ?>
-                    <a href="<?php echo esc_url(get_permalink());?>">
-                        <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                    <div class="content-card">
+                        <a href="<?php echo esc_url(get_permalink());?>">
+                            <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                        </a>
                         <h4 class="description-main-card"><?php echo get_the_excerpt(); ?></h4>
-                    </a>
-                    <div class="hashtag-main-card">
-                        <?php 
-                            $tags = get_the_tags();
-                            foreach ($tags as $tag) {
-                                echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
-                            }
-                        ?>
+                        <div class="hashtag-main-card">
+                            <?php
+                                $tags = get_the_tags();
+                                foreach ($tags as $tag) {
+                                    echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
                 <?php  
@@ -261,17 +265,19 @@
                         else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card" class="image-main-card">';
                         endif; 
                     ?>
-                    <a href="<?php echo esc_url(get_permalink());?>">
-                        <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                    <div class="content-card">
+                        <a href="<?php echo esc_url(get_permalink());?>">
+                            <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                        </a>
                         <h4 class="description-main-card"><?php echo get_the_excerpt(); ?></h4>
-                    </a>
-                    <div class="hashtag-main-card">
-                        <?php 
-                            $tags = get_the_tags();
-                            foreach ($tags as $tag) {
-                                echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
-                            }
-                        ?>
+                        <div class="hashtag-main-card">
+                            <?php
+                                $tags = get_the_tags();
+                                foreach ($tags as $tag) {
+                                    echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
                 <?php  
@@ -366,17 +372,19 @@
                         else: echo ' <img src="' . get_template_directory_uri() . '/assets/images/Main-Page/placeholder-image.jpg" alt="Main Card" class="image-main-card">';
                         endif; 
                     ?>
-                    <a href="<?php echo esc_url(get_permalink());?>">
-                        <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                    <div class="content-card">
+                        <a href="<?php echo esc_url(get_permalink());?>">
+                            <h2 class="heading-main-card"><?php the_title(); ?></h2>
+                        </a>
                         <h4 class="description-main-card"><?php echo get_the_excerpt(); ?></h4>
-                    </a>
-                    <div class="hashtag-main-card">
-                        <?php 
-                            $tags = get_the_tags();
-                            foreach ($tags as $tag) {
-                                echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
-                            }
-                        ?>
+                        <div class="hashtag-main-card">
+                            <?php
+                                $tags = get_the_tags();
+                                foreach ($tags as $tag) {
+                                    echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">' . esc_html($tag->name) . '</a>';
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
                 <?php  
@@ -624,58 +632,37 @@
                     <h1>T</h1>
                     <h1>S</h1>
                 </div>
-                <div class="podcasts-introduction-2" data-aos="fade-down" data-aos-delay="600"
-                    data-aos-anchor=".podcasts-introduction-1">
-                    <h3>một sản phẩm của</h3>
-                    <a href="https://www.facebook.com/clb.vanhoc.ct/" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/gocnho-logo.png"
-                            alt="Góc nhỏ Văn Học - THPT Châu Thành"></a>
-                </div>
             </div>
             <div class="podcasts-content" id="first" data-aos="fade-right"">
                 <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Image" style="margin-right: 5%;">
                 <div>
-                    <h1 style="font-size: 2.5vw;">Về Góc Nhỏ Văn Học</h1>
-                    <h3 style="font-size: 1.35vw; font-weight: 400;">Lorem ipsum odor amet, consectetuer adipiscing elit.
-                        Vivamus non porttitor augue vehicula eros nascetur magnis. Nam porttitor blandit iaculis
-                        sagittis finibus enim. Cras purus vivamus elementum class purus odio mauris. Class platea nam
-                        odio luctus montes laoreet.</h3>
-                    <a href="https://www.facebook.com/clb.vanhoc.ct/" target="_blank" style="font-size: 1.2vw;">Ghé thăm
-                        Góc Nhỏ &nbsp;<i class="fa-solid fa-external-link-alt"></i></a>
+                    <h1 style="font-size: 2.3rem; font-family: var(--ff-2);">Về Lời Hoa</h1>
+                    <h3 style="font-size: 1.15rem; font-weight: 400; line-height: 1.5rem;">Lời Hoa là chuỗi Podcast được thực hiện bởi Chạm Văn. Với nội dung tập trung vào trọng tâm Tri thức ngữ văn của những thể loại văn học, đồng thời đưa ra các ví dụ cụ thể nhằm làm rõ kiến thức đã cung cấp, Lời Hoa là trải nghiệm thanh âm văn học sinh động và hữu ích dành cho bạn.
+                    </h3>
+                    <a href="https://www.facebook.com/ivan0id_07/" target="_blank" style="font-size: 1.2vw;">Ghé thăm Lời Hoa &nbsp;<i class="fa-solid fa-external-link-alt"></i></a>
                 </div>
             </div>
             <div class="podcasts-content" id="second" data-aos="fade-left">
                 <div>
-                    <h1 style="font-size: 2.5vw;">Podcasts của Góc Nhỏ có gì?</h1>
-                    <h3 style="font-size: 1.35vw; font-weight: 400;">Lorem ipsum odor amet, consectetuer adipiscing elit.
-                        Vivamus non porttitor augue vehicula eros nascetur magnis. Nam porttitor blandit iaculis
-                        sagittis finibus enim. Cras purus vivamus elementum class purus odio mauris. Class platea nam
-                        odio luctus montes laoreet.</h3>
+                    <h1 style="font-size: 2.3rem; font-family: var(--ff-2);">Những điểm đặc biệt của Lời Hoa</h1>
+                    <h3 style="font-size: 1.15rem; font-weight: 400; line-height: 1.5rem;">Thuộc khuôn khổ giải pháp cho đề tài nghiên cứu về Văn học, nội dung và hình thức của chuỗi Podcast giúp bạn trẻ khơi gợi sự hứng thú khi học Văn, đảm bảo khoa học, đầy đủ và hấp dẫn.</h3>
                 </div>
                 <img src="<?php bloginfo('template_directory'); ?>/assets/images/Main-Page/placeholder-image.jpg" alt="Image" style="margin-left: 5%;">
             </div>
             <div class="podcasts-conclusion">
-                <div class="podcasts-conclusion-introduction">
-                    <div class="podcasts-conclusion-heading">Lắng nghe văn chương</div>
-                    <div class="text-change-list">
-                        <div class="text-change" id="first">để học những điều mới</div>
-                        <div class="text-change" id="second">và hoàn thiện bản thân</div>
-                        <div class="text-change" id="third">qua lăng kính cuộc sống</div>
-                        <div class="text-change" id="fourth">ở mọi nơi, vào mọi lúc</div>    
-                    </div>
-                </div>
                 <div class="podcasts-conclusion-content">
                     <div class="podcasts-conclusion-center">Bạn có thể</div>
                     <div class="podcasts-conclusion-half" id="left">
                         <div class="content">
-                            <h1>Xem Podcasts trên Chạm Văn</h1>
+                            <h1>Xem Lời Hoa trên Chạm Văn</h1>
                             <p>Sử dụng giao diện podcasts được thiết kế riêng biệt của Chạm Văn với trải nghiệm nghe nhìn tốt nhất.</p>
                             <a href="<?php echo home_url('category/podcasts-archive')?>">Tới trang Podcasts &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="podcasts-conclusion-half" id="right"> 
                         <div class="content">
-                            <h1>Xem Podcasts trên nền tảng khác</h1>  
-                            <p>Truy cập vào nguồn podcasts của Góc Nhỏ Văn Học qua mạng xã hội tiện lợi nhất dành cho bạn.</p>
+                            <h1>Xem Lời Hoa trên nền tảng khác</h1>  
+                            <p>Truy cập vào nguồn podcasts của Chạm Văn qua mạng xã hội tiện lợi nhất dành cho bạn.</p>
                             <div>
                                 <a href="#!">Soundcloud &nbsp;<i class="fa-brands fa-soundcloud"></i></a>
                                 <a href="#!">Facebook &nbsp;<i class="fa-brands fa-facebook"></i></a>

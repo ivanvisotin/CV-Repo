@@ -1,6 +1,3 @@
-<?php
-    get_header();
-?>
 
 <?php 
     $queried_object = get_queried_object();
@@ -143,7 +140,3 @@
         </div>
     </div>
 </div>
-
-<?php
-    get_footer();
-?>

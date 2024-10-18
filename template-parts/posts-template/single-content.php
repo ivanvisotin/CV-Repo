@@ -62,11 +62,20 @@
             <i class="material-icons" style="font-size: 16px">visibility</i>
             <span class="views"><?php echo (int) get_post_meta(get_the_ID(), 'post_views_count', true); ?></span>
         </div>
+        <!-- Thumbnail -->
+        <?php
+            if (has_post_thumbnail()) {
+                $thumbnail = get_the_post_thumbnail_url();
+                echo '<img src="'. $thumbnail .'" alt="Thumbnail" class="thumbnail">';
+            }
+            else {
+                echo '<img src="'. get_template_directory_uri() .'/assets/images/Main-Page/placeholder-image.jpg" alt="Thumbnail" class="thumbnail">'; 
+            }
+        ?> 
     </div>
     <div class="content">
         <div class="main-content">
                 <div class="excerpt"><?php the_excerpt();?></div>
-                <!-- <div class="featured-image"><?php ?></div> -->
                 <?php the_content(); ?>
         </div>
         <div class="side-content">
@@ -110,6 +119,7 @@
     <div class="comment-section">
         <div class="introduction">
             <h2>Bình luận</h2>
+            <span>Chạm Văn đang cập nhật thêm tính năng bình luận. Cùng đón chờ nhé!</span>
         </div>
     </div>
     <?php 

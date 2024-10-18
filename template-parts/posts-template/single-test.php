@@ -16,15 +16,14 @@
             while (have_posts()): the_post();
     ?>
     <form method="post">
-        <nav class="header">
+        <nav class="header" id="anchor-start-page">
             <?php 
                 $test_cat = get_category_by_slug('tests-archive');
             ?>
             <a href="<?php echo get_category_link($test_cat->term_id); ?>" class="exit"><span class="material-symbols-outlined">logout</span>&nbsp;Quay về</a>
             <div class="timer"></div>    
-                <input type="hidden" name="end_time" id="end_time" value="">
-                <button type="submit" name="submit_exam" class="submit">Nộp bài</button>
-            </form>
+            <input type="hidden" name="end_time" id="end_time" value="">
+            <button type="submit" name="submit_exam" class="submit-button">Nộp bài</button>
             <script>
                 <?php $exam_duration =  get_post_meta(get_the_ID(), 'exam_duration', true); ?>
                 var examDuration = <?php echo $exam_duration ?> * 60;
@@ -70,6 +69,5 @@
     endif;
     ?>
     <?php 
-        wp_footer();
+        get_footer();
     ?>
-</body>
