@@ -10,9 +10,14 @@
         get_template_part('template-parts/page-template/page', 'attribution');
         get_footer();
     }
-    elseif (is_page('account')) {
+    elseif (is_page('login')) {
         wp_head();
-        get_template_part('template-parts/page-template/page', 'account'); 
+        get_template_part('template-parts/page-template/page', 'login'); 
+        wp_footer();
+    }
+    elseif (is_page('register')) {
+        wp_head();
+        get_template_part('template-parts/page-template/page', 'register'); 
         wp_footer();
     }
 ?>

@@ -60,13 +60,13 @@
         <div class="wrapper-login-button">
             <?php 
                 if (!is_user_logged_in()) {
-                    echo '<a href="'. get_page_link(get_page_by_path('account')->ID) . '">Đăng nhập</a>';
+                    echo '<a href="'. get_page_link(get_page_by_path('login')->ID) . '">Đăng nhập</a>';
                 }
                 else {
                     $user = wp_get_current_user();
                     $user_id = $user->ID;
-                    echo get_avatar($user_id);
-                    echo '<a href="'. get_page_link(get_page_by_path('account')->ID) . '">' . $user->first_name .'</a>';
+                    echo get_avatar($user_id, 30, '', '', array('class' => 'avatar'));
+                    echo '<a href="'. get_page_link(get_page_by_path('login')->ID) . '">' . $user->first_name .'</a>';
                 }
             ?>
             

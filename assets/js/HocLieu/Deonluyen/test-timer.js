@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const formElement = submitBtn.closest('form');
         const startTime = Date.now();
         const endTime = startTime + countdownTime * 1000;
-        const minSubmitTime = 10 * 60 * 1000;
+        const minSubmitTime = timeLimit * 60 * 1000;
 
         const interval = setInterval(() => {
             const remainingTime = endTime - Date.now();
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const currentTime = Date.now();
             if (currentTime - startTime < minSubmitTime) {
                 event.preventDefault();
-                alert('Bạn cần làm tối thiểu 10 phút trước khi nộp bài!');
+                alert(`Bạn cần làm tối thiểu ${timeLimit} phút trước khi nộp bài!`);
                 return;
             }
             event.preventDefault(); 

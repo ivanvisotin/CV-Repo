@@ -172,8 +172,11 @@
         if (is_page('ghi-cong-giay-phep-su-dung')) {
             wp_enqueue_style('attribution-page', get_template_directory_uri() . "/assets/css/Contribution/attribution.css", array(), $version, 'all');
         }
-        if (is_page('account')) {
-            wp_enqueue_style('account-page', get_template_directory_uri() . "/assets/css/Login/account.css", array(), $version, 'all');
+        if (is_page('login')) {
+            wp_enqueue_style('login-page', get_template_directory_uri() . "/assets/css/Login/login.css", array(), $version, 'all');
+        }
+        if (is_page('login')) {
+            wp_enqueue_style('register-page', get_template_directory_uri() . "/assets/css/Login/register.css", array(), $version, 'all');
         }
     }
     add_action('wp_enqueue_scripts', 'chamvan_register_styles');

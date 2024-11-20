@@ -36,7 +36,7 @@
                 <div class="results">
                     <div class="results-header">                      
                         <span class="text">Kết quả</span>
-                        <a href="<?php echo get_category_link($test_cat->term_id); ?>"><i class="fa-solid fa-xmark fa-xl symbol" title="Quay về trang đề thi"></i></a>
+                        <span><i class="fa-solid fa-xmark fa-xl symbol" title="Quay về trang đề thi"></i></span>
                     </div>
                     <div class="results-indicator">
                         <h2>Bài làm của bạn</h2>
@@ -61,9 +61,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="confirm-exit">
+                    <h1>Xác nhận thoát?</h1>
+                    <h3>Do Chạm Văn chưa cập nhật tính năng lưu lịch sử làm bài, bài viết của bạn có thể bị xóa.</h3>
+                    <div class="actions">
+                        <button class="deny-exit" type="button">Tiếp tục xem kết quả</button>
+                        <button class="still-exit" type="button">Xác nhận thoát</button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
+    <script>
+        let testURL = "<?php echo get_category_link($test_cat->term_id); ?>";
+        let timeLimit = <?php echo get_post_meta(get_the_ID(), 'time_limit', true); ?>;
+    </script>
     <?php 
         endwhile;
     endif;
